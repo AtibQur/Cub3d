@@ -16,7 +16,8 @@ SRC_DIR = src
 
 INC	:=	-I $(INCLUDE_DIR)
 
-SRCS =	main.c
+SRCS =	main.c \
+		cub3d.c
 
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
