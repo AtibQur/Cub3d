@@ -6,8 +6,8 @@ CFLAGS = -g -I include
 
 LFLAGS = -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
-CC = gcc -Wall -Werror -Wextra
-
+CC = gcc
+# -Wall -Werror -Wextra
 LIBFT = lib/libft/libft.a
 MLX = lib/mlx/libmlx42.a
 
@@ -17,7 +17,8 @@ SRC_DIR = src
 INC	:=	-I $(INCLUDE_DIR)
 
 SRCS =	main.c \
-		cub3d.c
+		cub3d.c \
+		check_input.c \
 
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
