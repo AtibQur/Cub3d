@@ -19,6 +19,8 @@ INC	:=	-I $(INCLUDE_DIR)
 SRCS =	main.c \
 		cub3d.c \
 		check_input.c \
+		top_view.c \
+		hook.c
 
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
