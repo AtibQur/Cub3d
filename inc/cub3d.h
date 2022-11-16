@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/16 11:16:08 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/16 12:19:07 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 # include <memory.h>
 
 enum color {
-    RGB_RED = 0xFF0000,
-    RGB_GREEN = 0x00FF00,
-    RGB_BLUE = 0x0000FF,
-    RGB_WHITE = 0xFFFFFF,
-    RGB_YELLOW = 0xFFFF00
+    RGB_RED = 0xFF0000FF,
+    RGB_GREEN = 0x00FF00FF,
+    RGB_BLUE = 0x0000FFFF,
+    RGB_WHITE = 0xFFFFFFFF,
+    RGB_YELLOW = 0xFFFF00FF
 };
 
 typedef struct s_data {
