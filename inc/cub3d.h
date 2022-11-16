@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/15 15:42:11 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/16 11:16:08 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int		main(void);
 void	cub3d(void);
 
 // manageInput.c
-
 
 
 #endif
