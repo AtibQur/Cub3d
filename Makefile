@@ -19,6 +19,7 @@ INC	:=	-I $(INCLUDE_DIR)
 SRCS =	main.c \
 		cub3d.c \
 		check_input.c \
+		draw_wall.c \
 
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
