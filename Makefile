@@ -20,6 +20,8 @@ SRCS =	main.c \
 		cub3d.c \
 		check_input.c \
 		draw_wall.c \
+		top_view.c \
+		hook.c
 
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 

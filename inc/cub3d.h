@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/18 15:04:51 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3d.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/11/18 15:25:07 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ enum color {
 typedef struct s_data {
     mlx_t       *mlx;
     // mlx_texture *mlx_texture;
-    mlx_image_t *mlx_image;
+    mlx_image_t *background_image;
+    mlx_image_t *player_image;
+    int         posX;
     int         mapX;
     int         mapY;
     double      posX;
-    double      posY;
+    double      posY;int         posY;
 }       t_data;
 
 // main.c
@@ -51,5 +53,7 @@ void	cub3d(void);
 // manageInput.c
 void draw_wall(t_data *data);
 void draw_floor_ceiling(t_data *data);
+// hook.c
+void	hook(void *param);
 
 #endif
