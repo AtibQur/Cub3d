@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/11/16 16:31:42 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/11/18 14:25:22 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ enum color {
 typedef struct s_data {
     mlx_t       *mlx;
     // mlx_texture *mlx_texture;
-    mlx_image_t *mlx_image;
-    
+    mlx_image_t *background_image;
+    mlx_image_t *player_image;
+    int         posX;
+    int         posY;
 }       t_data;
 
 // main.c
