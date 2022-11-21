@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/21 11:50:06 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3d.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/11/21 12:10:00 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void draw_wall(t_data *data);
 void draw_floor_ceiling(t_data *data);
 // hook.c
 void	hook(void *param);
-
+int     return_double(int num);
 //init all data
 void    init_data(t_data *data);
 

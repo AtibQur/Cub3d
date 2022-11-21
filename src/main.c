@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 14:46:09 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/21 11:41:06 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/14 14:46:09 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/11/21 12:11:26 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int main(void)
 {
-	t_data data;
+// 	t_data data;
 	
 	init_data(&data);
 	data.mlx = mlx_init(screenWidth, screenHeight, "Cub3d", true);
