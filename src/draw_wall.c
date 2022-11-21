@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:31:45 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/18 15:15:09 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/21 11:55:44 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,17 @@ void draw_floor_ceiling(t_data *data)
 
 void draw_wall(t_data *data)
 {
-	double dirX = -1, dirY = 0; //initial direction vector
-	double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
+  int x;
 
-	double time = 0; //time of current frame
-	double oldTime = 0; //time of previous frame
-    
-    for(int x = 0; x < data->mlx->width; x++)
+  x = 0;
+	while (x < data->mlx->width)  
 	{
-        // printf("posx = \"%f\" posY = \"%f\"\n", data->posX, data->posY);
-		double cameraX = 2 * x / (double)data->mlx->width - 1; //x-coordinate in camera space
-      	double rayDirX = dirX + planeX * cameraX;
-      	double rayDirY = dirY + planeY * cameraX;
-      	//which box of the map we're in
+    	double cameraX = 2 * x / (double)data->mlx->width - 1;
+      	double rayDirX = data->dirX + data->planeX * cameraX;
+      	double rayDirY = data->dirY + data->planeY * cameraX;
       	data->mapX = (int)(data->posX);
       	data->mapY = (int)(data->posY);
-
-		//length of ray from current position to next x or y-side
+		
     	double sideDistX;
     	double sideDistY;
 
@@ -86,62 +80,61 @@ void draw_wall(t_data *data)
     	double deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
       	double perpWallDist;
 
-      //what direction to step in x or y-direction (either +1 or -1)
-      int stepX;
-      int stepY;
+		int stepX;
+    	int stepY;
+    	data->hit = 0;
+    	int side;
 
-      int hit = 0; //was there a wall hit?
-      int side; //was a NS or a EW wall hit?
-      //calculate step and initial sideDist
-      if(rayDirX < 0)
-      {
-        stepX = -1;
-        sideDistX = (data->posX - data->mapX) * deltaDistX;
-      }
-      else
-      {
-        stepX = 1;
-        sideDistX = (data->mapX + 1.0 - data->posX) * deltaDistX;
-      }
-      if(rayDirY < 0)
-      {
-        stepY = -1;
-        sideDistY = (data->posY - data->mapY) * deltaDistY;
-      }
-      else
-      {
-        stepY = 1;
-        sideDistY = (data->mapY + 1.0 - data->posY) * deltaDistY;
-      }
-//perform DDA
-      while(hit == 0)
-      {
-        //jump to next map square, either in x-direction, or in y-direction
-        if(sideDistX < sideDistY)
-        {
-          sideDistX += deltaDistX;
-          data->mapX += stepX;
-          side = 0;
-        }
-        else
-        {
-          sideDistY += deltaDistY;
-          data->mapY += stepY;
-          side = 1;
-        }
-        //Check if ray has hit a wall
-        if(worldMap[data->mapX][data->mapY] > 0) hit = 1;
-      }
+    	if(rayDirX < 0)
+    	{
+    		stepX = -1;
+    		sideDistX = (data->posX - data->mapX) * deltaDistX;
+    	}
+    	else
+    	{
+    		stepX = 1;
+        	sideDistX = (data->mapX + 1.0 - data->posX) * deltaDistX;
+      	}
+		if(rayDirY < 0)
+		{
+			stepY = -1;
+			sideDistY = (data->posY - data->mapY) * deltaDistY;
+		}
+		else
+		{
+			stepY = 1;
+			sideDistY = (data->mapY + 1.0 - data->posY) * deltaDistY;
+		}
+
+		//perform DDA
+    	while(data->hit == 0)
+    	{
+			if(sideDistX < sideDistY)
+			{
+				sideDistX += deltaDistX;
+				data->mapX += stepX;
+				side = 0;
+			}
+			else
+			{
+				sideDistY += deltaDistY;
+				data->mapY += stepY;
+				side = 1;
+			}
+			if (worldMap[data->mapX][data->mapY] > 0) 
+				data->hit = 1;
+		}
+
       if(side == 0) perpWallDist = (sideDistX - deltaDistX);
       else          perpWallDist = (sideDistY - deltaDistY);
 
       //Calculate height of line to draw on screen
-      int lineHeight = (int)(data->mlx->height) / perpWallDist;
+      data->lineHeight = (int)(data->mlx->height) / perpWallDist;
 
       //calculate lowest and highest pixel to fill in current stripe
-      int drawStart = -lineHeight / 2 + data->mlx->height / 2;
+      int drawStart = -data->lineHeight / 2 + data->mlx->height / 2;
       if(drawStart < 0) drawStart = 0;
-      int drawEnd = lineHeight / 2 + data->mlx->height / 2;
+      int drawEnd = data->lineHeight / 2 + data->mlx->height / 2;
       if(drawEnd >= data->mlx->height) drawEnd = data->mlx->height - 1;
 
       //choose wall color
@@ -156,14 +149,11 @@ void draw_wall(t_data *data)
 
       //give x and y sides different brightness
     //   if(side == 1) {color = color / 2;}
-
-      //draw the pixels of the stripe as a vertical line
-    //   verLine(x, drawStart, drawEnd, color);
-        while (drawStart < drawEnd)
-        {
-	        mlx_put_pixel(data->mlx_image, x, drawStart, color);
-            drawStart++;
-        }
+          while (drawStart < drawEnd)
+          {
+            mlx_put_pixel(data->mlx_image, x, drawStart, color);
+              drawStart++;
+          }
+        x++;
     }
-    
 }

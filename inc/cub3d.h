@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   cub3d.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/11/18 15:29:25 by tvan-der      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
+/*   Updated: 2022/11/21 11:50:06 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,23 @@ enum color {
 
 typedef struct s_data {
     mlx_t       *mlx;
+    mlx_image_t *mlx_image;
     // mlx_texture *mlx_texture;
     // mlx_image_t *background_image;
     // mlx_image_t *player_image;
-    mlx_image_t *mlx_image;
     // int         posX;
     // int         posY;
     int         mapX;
     int         mapY;
     double      posX;
     double      posY;
+    double      dirX;
+    double      dirY;
+    double      planeX;
+    double      planeY;
+    double      cameraX;
+    int         hit;
+    int         lineHeight;
 }       t_data;
 
 // main.c
@@ -57,5 +64,8 @@ void draw_wall(t_data *data);
 void draw_floor_ceiling(t_data *data);
 // hook.c
 void	hook(void *param);
+
+//init all data
+void    init_data(t_data *data);
 
 #endif

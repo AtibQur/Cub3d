@@ -21,7 +21,8 @@ SRCS =	main.c \
 		check_input.c \
 		draw_wall.c \
 		top_view.c \
-		hook.c
+		hook.c \
+		init_data.c \
 
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
