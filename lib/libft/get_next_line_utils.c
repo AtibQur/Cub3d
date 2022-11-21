@@ -6,11 +6,11 @@
 /*   By: Tessa <tvan-der@student.codam.nl>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/10 10:36:31 by Tessa         #+#    #+#                 */
-/*   Updated: 2021/11/17 11:59:04 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/05/06 15:38:21 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 int	find_new_line(char *str)
 {
@@ -28,7 +28,7 @@ int	find_new_line(char *str)
 	return (0);
 }
 
-int	ft_strlen(char *str)
+int	get_index(char *str)
 {
 	int	i;
 
@@ -78,7 +78,7 @@ int	ft_strcorrect(char *str)
 	return (0);
 }
 
-char	*ft_strjoin(char *str1, char *str2)
+char	*get_joined(char *str1, char *str2)
 {
 	int		i;
 	int		len_str1;
@@ -87,8 +87,8 @@ char	*ft_strjoin(char *str1, char *str2)
 
 	if (!str2)
 		return (str1);
-	len_str1 = ft_strlen(str1);
-	len_str2 = ft_strlen(str2);
+	len_str1 = get_index(str1);
+	len_str2 = get_index(str2);
 	new = (char *)malloc(sizeof(char) * (len_str1 + len_str2 + 1 + 1));
 	if (!new)
 		return (NULL);

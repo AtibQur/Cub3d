@@ -6,11 +6,11 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 11:18:56 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/11/21 11:42:05 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/11/21 15:21:31 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "cub3d.h"
 
 int return_double(int num)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: svan-ass <svan-ass@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 12:42:45 by svan-ass          #+#    #+#             */
-/*   Updated: 2022/04/19 10:40:40 by svan-ass         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   libft.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: svan-ass <svan-ass@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/09 12:42:45 by svan-ass      #+#    #+#                 */
+/*   Updated: 2022/11/21 15:14:23 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
+
+# define MAX_FD 1024
 
 typedef struct s_list
 {
@@ -68,5 +74,13 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+int		find_new_line(char *str);
+int		get_index(char *str);
+int		ft_strcorrect(char *str);
+void	ft_strcpy(char *dst, char *src);
+char	*get_joined(char *str1, char *str2);
+char	*update_and_correct(char *line, char *buffer);
+char	*get_next_line(int fd);
 
 #endif
