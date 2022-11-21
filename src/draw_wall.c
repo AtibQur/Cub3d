@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   draw_wall.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 14:31:45 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/18 15:15:09 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   draw_wall.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/18 14:31:45 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/11/21 11:38:21 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void draw_wall(t_data *data)
 	double dirX = -1, dirY = 0; //initial direction vector
 	double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
 
-	double time = 0; //time of current frame
-	double oldTime = 0; //time of previous frame
+	// double time = 0; //time of current frame
+	// double oldTime = 0; //time of previous frame
     
     for(int x = 0; x < data->mlx->width; x++)
 	{
@@ -155,7 +155,7 @@ void draw_wall(t_data *data)
       }
 
       //give x and y sides different brightness
-    //   if(side == 1) {color = color / 2;}
+      if(side == 1) {color = color / 2;}
 
       //draw the pixels of the stripe as a vertical line
     //   verLine(x, drawStart, drawEnd, color);

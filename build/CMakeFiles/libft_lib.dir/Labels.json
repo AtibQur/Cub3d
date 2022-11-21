@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/tvan-der/Desktop/Cub3d/build/CMakeFiles/libft_lib"
+		},
+		{
+			"file" : "/Users/tvan-der/Desktop/Cub3d/build/CMakeFiles/libft_lib.rule"
+		},
+		{
+			"file" : "/Users/tvan-der/Desktop/Cub3d/build/CMakeFiles/libft_lib-complete.rule"
+		},
+		{
+			"file" : "/Users/tvan-der/Desktop/Cub3d/build/libft_lib-prefix/src/libft_lib-stamp/libft_lib-build.rule"
+		},
+		{
+			"file" : "/Users/tvan-der/Desktop/Cub3d/build/libft_lib-prefix/src/libft_lib-stamp/libft_lib-configure.rule"
+		},
+		{
+			"file" : "/Users/tvan-der/Desktop/Cub3d/build/libft_lib-prefix/src/libft_lib-stamp/libft_lib-download.rule"
+		},
+		{
+			"file" : "/Users/tvan-der/Desktop/Cub3d/build/libft_lib-prefix/src/libft_lib-stamp/libft_lib-install.rule"
+		},
+		{
+			"file" : "/Users/tvan-der/Desktop/Cub3d/build/libft_lib-prefix/src/libft_lib-stamp/libft_lib-mkdir.rule"
+		},
+		{
+			"file" : "/Users/tvan-der/Desktop/Cub3d/build/libft_lib-prefix/src/libft_lib-stamp/libft_lib-patch.rule"
+		},
+		{
+			"file" : "/Users/tvan-der/Desktop/Cub3d/build/libft_lib-prefix/src/libft_lib-stamp/libft_lib-test.rule"
+		},
+		{
+			"file" : "/Users/tvan-der/Desktop/Cub3d/build/libft_lib-prefix/src/libft_lib-stamp/libft_lib-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"libft_lib"
+		],
+		"name" : "libft_lib"
+	}
+}

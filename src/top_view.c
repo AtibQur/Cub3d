@@ -6,7 +6,7 @@
 /*   By: tvan-der <tvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/16 16:24:58 by tvan-der      #+#    #+#                 */
-/*   Updated: 2022/11/18 15:29:02 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/11/18 15:37:49 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #include <math.h>
 #include <string.h>
 
-#define screenWidth 640
-#define screenHeight 640
-#define mapWidth 20
-#define mapHeight 20
+// #define screenWidth 640
+// #define screenHeight 640
+// #define mapWidth 20
+// #define mapHeight 20
 
 // 1 block = 500/5 = 100 pixels
 
