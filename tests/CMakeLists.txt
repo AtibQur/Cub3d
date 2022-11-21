@@ -10,7 +10,7 @@ link_directories(
 
 ### C Source Files ###
 file(GLOB sources
-			"${PROJECT_SOURCE_DIR}/src/check_input.c"
+			"${PROJECT_SOURCE_DIR}/src/parser/check_input.c"
 			"${PROJECT_SOURCE_DIR}/src/main.c"
 		)
 list(REMOVE_ITEM sources "${PROJECT_SOURCE_DIR}/src/main.c")
