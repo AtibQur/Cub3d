@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:38:10 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/21 11:49:54 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/21 13:47:29 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,4 @@ void    init_data(t_data *data)
 	data->planeX = 0;
 	data->planeY = 0.66;
 	data->hit = 0;
-	
 }

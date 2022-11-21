@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:31:45 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/21 11:55:44 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/21 12:15:03 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ void draw_floor_ceiling(t_data *data)
 
 void draw_wall(t_data *data)
 {
-  int x;
+	int x;
 
-  x = 0;
+	x = 0;
 	while (x < data->mlx->width)  
 	{
     	double cameraX = 2 * x / (double)data->mlx->width - 1;
@@ -141,19 +141,19 @@ void draw_wall(t_data *data)
 	  int color;
       switch(worldMap[data->mapX][data->mapY])
       {
-        case 1:  color = RGB_RED;    break; //red  
-        case 2:  color = RGB_GREEN;  break; //green
-        case 3:  color = RGB_BLUE;   break; //blue
-        case 4:  color = RGB_WHITE;  break; //white
+        case 1:  color = RGB_RED;    break;  
+        case 2:  color = RGB_GREEN;  break;
+        case 3:  color = RGB_BLUE;   break;
+        case 4:  color = RGB_WHITE;  break;
       }
 
       //give x and y sides different brightness
-    //   if(side == 1) {color = color / 2;}
-          while (drawStart < drawEnd)
-          {
-            mlx_put_pixel(data->mlx_image, x, drawStart, color);
-              drawStart++;
-          }
+    	//   if(side == 1) {color = color / 2;}
+        while (drawStart < drawEnd)
+        {
+        	mlx_put_pixel(data->mlx_image, x, drawStart, color);
+        	drawStart++;
+        }
         x++;
     }
 }
