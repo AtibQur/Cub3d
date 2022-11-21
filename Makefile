@@ -23,6 +23,7 @@ SRCS =	main.c \
 		top_view.c \
 		hook.c \
 		init_data.c \
+		parse_map.c \
 
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
