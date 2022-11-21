@@ -22,7 +22,7 @@ add_subdirectory(tests)
 
 file(GLOB sources
 	"${PROJECT_SOURCE_DIR}/inc/*.h"
-	"${PROJECT_SOURCE_DIR}/src/check_input.c"
+	"${PROJECT_SOURCE_DIR}/src/parser/check_input.c"
 	"${PROJECT_SOURCE_DIR}/src/main.c"
 )
 

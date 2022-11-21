@@ -1,8 +1,11 @@
 NAME = cub3d
 
+VPATH = src:\
+		src/parser
+
 HEADER = inc/
 
-CFLAGS = -g -I include 
+CFLAGS = -I include 
 
 LFLAGS = -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
@@ -14,26 +17,38 @@ MLX = lib/mlx/libmlx42.a
 OBJS_DIR = objs
 SRC_DIR = src
 
-INC	:=	-I $(INCLUDE_DIR)
+# INC	:=	-I $(INCLUDE_DIR)
+INC = -Ilibft -Iinc -I
 
 SRCS =	main.c \
 		cub3d.c \
-		check_input.c \
 		draw_wall.c \
 		top_view.c \
 		hook.c \
 		init_data.c \
+		parser/check_input.c \
 
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
+ifdef DEBUG
+ CFLAGS = -Wextra -Wall -Werror -fsanitize=address -g
+ LIBFT_MAKE = make debug -sC lib/libft
+else
+ CFLAGS = -Wextra -Wall -Werror -g
+ LIBFT_MAKE = make -sC lib/libft
+endif
+
 all: $(LIBFT) $(MLX) $(NAME)
+
+debug:
+	@$(MAKE) DEBUG=1 all
 
 $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(INC) -I -c -o $@ $<
 
 $(LIBFT):
-	$(MAKE) -C lib/libft
+	@$(LIBFT_MAKE)
 
 $(MLX):
 	@$(MAKE) -C lib/mlx 
