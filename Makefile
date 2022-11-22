@@ -21,13 +21,14 @@ SRC_DIR = src
 INC = -Ilibft -Iinc -I
 
 SRCS =	main.c \
-		cub3d.c \
 		draw_wall.c \
 		top_view.c \
 		hook.c \
-		init_data.c \
+		init_game.c \
+		exit_game.c \
+		error_management/check_cub_extension.c \
 		parser/check_input.c \
-		parse_map.c \
+		parser/parse_map.c \
 
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
