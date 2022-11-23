@@ -20,11 +20,8 @@ SRC_DIR = src
 # INC	:=	-I $(INCLUDE_DIR)
 INC = -Ilibft -Iinc -I
 
-SRCS =	main.c \
+SRCS =	top_view/main.c \
 		cub3d.c \
-		draw_wall.c \
-		top_view.c \
-		hook.c \
 		init_data.c \
 		parser/check_input.c \
 		parse_map.c \
