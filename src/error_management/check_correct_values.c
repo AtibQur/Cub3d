@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   check_correct_values.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 11:31:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/23 11:21:20 by hqureshi         ###   ########.fr       */
+/*   Created: 2022/11/23 10:09:02 by hqureshi          #+#    #+#             */
+/*   Updated: 2022/11/23 12:09:10 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void    parse_map(t_data *data, char *file)
+// Check for the first 6 loops if there are not any other values,
+// if there are any other values, the map is wrong and should exit
+int check_correct_values(char *line)
 {
-    int fd;
-
-    fd = open(file, O_RDONLY);
-    if (fd < 0)
-        exit_game("Choose a correct file!", 1);
-    check_cub_extension(file); // check extension name
-    check_elements(data, fd); // check for elements and save values in file struct
+    if (line[0] != 'N' && line[0] != 'S' && line[0] != 'W' && line[0] &&\
+    line[0] != 'E' && line[0] != 'F' && line[0] != 'C' && line[0] != '\n' && \
+    line[0] != '\0')
+        return (1);
+    return (0);
 }

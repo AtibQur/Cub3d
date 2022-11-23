@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:37:23 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/22 15:26:05 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/23 12:08:44 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 
 void    init_data(t_data *data)
 {
-	// data->posX = 22;
-	// data->posY = 12;
-	// data->dirX = -1;
-	// data->dirY = 0;
-	// data->planeX = 0;
-	// data->planeY = 0.66;
-	// data->hit = 0;
 	data->file.no_wall = 0;
 	data->file.so_wall = 0;
 	data->file.we_wall = 0;

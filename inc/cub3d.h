@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/22 16:06:12 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/23 14:17:27 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,22 @@ void draw_floor_ceiling(t_data *data);
 void	hook(void *param);
 
 // initialize all game info
-void    init_game(t_data *data, int argc);
 void    init_data(t_data *data);
+void    init_game(t_data *data, int argc);
 
 // parse all incoming data
-void    parse_map(t_data *data, char *map);
-void    check_elements(t_data *data, int fd);
 int     return_double(int num);
+void    parse_map(t_data *data, char *map);
+void    start_parsing(t_data *data, int fd);
 
 // error management
 void    check_cub_extension(char *file);
+int     check_correct_values(char *line);
+void    check_elements(t_data *data, int fd);
+
+//  save wall and floor/ceiling data
+int     save_wall_textures(t_data *data, char *line);
+void	floor_and_ceiling_textures(t_data *data, char *line);
 
 // exit function
 void    exit_game(char *str, int exit_num);
