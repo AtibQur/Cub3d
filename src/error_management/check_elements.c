@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:44:54 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/23 14:26:36 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:40:40 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,27 @@ void    check_elements(t_data *data, int fd)
 {
     char    *line;
 	char	*tmp;
-    int     line_count;
+    int     element_count;
 
-    line_count = 0;
+    element_count = 0;
     line = get_next_line(fd);
-    while (line_count < 6)
+    while (element_count < 6)
     {
 		if (check_correct_values(line) == 1)
 			exit_game("Map does not have the correct values", 1);
     	else if (line[0] == 'N' || line[0] == 'S' || line[0] == 'W' || line[0] == 'E')
-			line_count += save_wall_textures(data, line);
+			element_count += save_wall_textures(data, line);
 		else if (line[0] == 'F' || line[0] == 'C')
 		{
 			floor_and_ceiling_textures(data, line);
-			line_count++;
+			element_count++;
 		}
 		tmp = line;
     	line = get_next_line(fd);
+		if (!line)
+			exit_game("File descriptor failed", 1);
 		free(tmp);
+		data->map.map_start += 1;
 	}
 	free(line);
 }

@@ -27,10 +27,12 @@ SRCS =	main.c \
 		init_game.c \
 		exit_game.c \
 		save_wall_textures.c \
+		draw_floor_ceiling.c \
 		floor_and_ceiling_textures.c \
 		error_management/check_correct_values.c \
 		error_management/check_elements.c \
 		error_management/check_cub_extension.c \
+		error_management/check_width_height.c \
 		parser/check_input.c \
 		parser/parse_map.c \
 
