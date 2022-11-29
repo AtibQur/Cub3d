@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/29 14:46:18 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:32:20 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_map {
     int         map_start;
     int         width;
     int         height;
+    int         existing_player;
 }       t_map;
 
 typedef struct s_texture {

@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:31:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/29 16:17:59 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:41:25 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,35 @@ void    copy_map_chars(t_map *map, char c, int *k, int i)
     printf("%c", c);
 }
 
+int add_player_pos(t_map *map, char c, int *k, int i)
+{
+    if (c == 'N')
+    {
+        map->map[i][*k] = c;
+        *k += 1;
+        return (1);
+    }
+    return (0);
+}
+
+// check with all sides
+int player_pos(t_data *data, char *line, int j)
+{
+    if (line[j] == 'N')
+    {
+        data->map.existing_player = 1;
+        return (1);
+    }
+    return (0);
+}
+
 void    copy_map(t_data *data, t_map *map, int fd)
 {
     int i;
     int j;
     int k;
     char *line;
-    data->test = NULL; // need to find player position in the loop to set right direction
+    data->test = NULL;
 
     line = get_next_line(fd);
     i = 0;
@@ -44,8 +66,11 @@ void    copy_map(t_data *data, t_map *map, int fd)
         j = 0;
         while (line[j])
         {
-            copy_map_chars(map, line[j], &k, i);
-            j++;
+            if (player_pos(data, line, j))
+                j += add_player_pos(map, line[j], &k, i);
+            else 
+                copy_map_chars(map, line[j], &k, i);
+                j++;
         }
         free(line);
         line = get_next_line(fd);
@@ -77,6 +102,7 @@ void    start_allocating(t_data *data, t_map *map)
         i++;
     }
     copy_map(data, map, fd);
+    close(fd);
 }
 
 void    start_parsing(t_data *data, t_map *map, int fd)
