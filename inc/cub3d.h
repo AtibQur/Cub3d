@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/28 15:24:18 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/29 14:46:18 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # include <fcntl.h>
 # include <string.h>
 
-#define screenWidth 640
-#define screenHeight 480
-#define mapWidth 24
-#define mapHeight 24
+# define screenWidth 640
+# define screenHeight 480
+# define mapWidth 24
+# define mapHeight 24
 
 enum color {
     RGB_RED = 0xFF0000FF,
@@ -62,7 +62,7 @@ typedef struct s_data {
     t_map       map;
     t_texture   texture;
     char        *file_name;
-    
+
     char        *test;
 }       t_data;
 
@@ -70,8 +70,8 @@ typedef struct s_data {
 int		main(int argc, char **argv);
 
 // draw functions
-void draw_wall(t_data *data);
-void draw_floor_ceiling(t_data *data);
+void    draw_wall(t_data *data);
+void    draw_floor_ceiling(t_data *data);
 
 // key hook functions
 void	hook(void *param);

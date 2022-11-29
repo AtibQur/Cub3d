@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:46:09 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/28 15:37:35 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:09:06 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int main(int argc, char **argv)
 
 	init_game(&data, argc, argv);
 	parse_map(&data);
-	data.mlx_image = mlx_new_image(data.mlx, screenWidth, screenHeight);
-	mlx_image_to_window(data.mlx, data.mlx_image, 0, 0);
-	mlx_loop_hook(data.mlx, &hook, &data);
-  	draw_floor_ceiling(&data);
-	mlx_loop(data.mlx);
-	mlx_terminate(data.mlx);
+	// data.mlx_image = mlx_new_image(data.mlx, screenWidth, screenHeight);
+	// mlx_image_to_window(data.mlx, data.mlx_image, 0, 0);
+	// mlx_loop_hook(data.mlx, &hook, &data);
+  	// draw_floor_ceiling(&data);
+	// mlx_loop(data.mlx);
+	// mlx_terminate(data.mlx);
 	return (EXIT_SUCCESS);
 }

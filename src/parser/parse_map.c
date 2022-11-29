@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:31:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/28 14:59:47 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:17:59 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ void    copy_map_chars(t_map *map, char c, int *k, int i)
         map->map[i + 3][*k] = ' ';
         *k += 3;
     }
-    else if (c == '0' || ft_isdigit(c) || c == ' ' || c == '\n')
+    else if (c == ' ' || c == '0' || c == '\n' || ft_isdigit(c))
         map->map[i][*k] = c;
-    else if (c != 'N' && c != 'S' && c != 'W' && c != 'E')
-        exit_game("Wrong map values", 1);
     *k += 1;
+    printf("%c", c);
 }
 
 void    copy_map(t_data *data, t_map *map, int fd)
@@ -35,16 +34,16 @@ void    copy_map(t_data *data, t_map *map, int fd)
     int j;
     int k;
     char *line;
-    data->test = NULL;
+    data->test = NULL; // need to find player position in the loop to set right direction
 
     line = get_next_line(fd);
     i = 0;
-    while (line) 
+    while (line)
     {
+        k = 0;
+        j = 0;
         while (line[j])
         {
-            j = 0;
-            k = 0;
             copy_map_chars(map, line[j], &k, i);
             j++;
         }
@@ -58,6 +57,7 @@ void    start_allocating(t_data *data, t_map *map)
 {
     int     i;
     int     fd;
+    char    *line;
     
     fd = open(data->file_name, O_RDONLY);
     if (fd < 0)
@@ -66,12 +66,18 @@ void    start_allocating(t_data *data, t_map *map)
     i = 0;
     while (i <= map->height)
     {
-        data->map.map = calloc((data->map.width + 1), sizeof(char *));
+        data->map.map[i] = calloc((data->map.width + 1), sizeof(char));
+        i++;
+    }
+    i = 0;
+    while (i < map->map_start)
+    {
+        line = get_next_line(fd);
+        free (line);
         i++;
     }
     copy_map(data, map, fd);
 }
-
 
 void    start_parsing(t_data *data, t_map *map, int fd)
 {

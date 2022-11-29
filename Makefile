@@ -9,7 +9,7 @@ CFLAGS = -I include
 
 LFLAGS = -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
-CC = gcc
+CC = gcc -fsanitize=address
 # -Wall -Werror -Wextra
 LIBFT = lib/libft/libft.a
 MLX = lib/mlx/libmlx42.a
