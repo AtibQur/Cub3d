@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/29 17:32:20 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/30 12:49:23 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,9 @@ void    copy_map(t_data *data, t_map *map, int fd);
 void    copy_map_chars(t_map *map, char c, int *k, int i);
 
 // error management
-void    check_cub_extension(char *map);
 int     check_correct_values(char *line);
+void    check_walls(t_data *data);
+void    check_cub_extension(char *map);
 void    check_elements(t_data *data, int fd);
 void    check_width_height(t_map *map, int fd, char *line);
 

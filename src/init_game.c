@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:37:23 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/29 17:34:01 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/30 12:56:11 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    init_data(t_data *data, char **argv)
     data->file_name = argv[1];
 	data->map.f_color = 0;
 	data->map.c_color = 0;
-    data->map.map_start = 1;
+    data->map.map_start = 0;
     data->map.existing_player = 0;
 }
 

@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:46:09 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/29 17:31:06 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/11/30 12:50:16 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int main(int argc, char **argv)
   	// draw_floor_ceiling(&data);
 	// mlx_loop(data.mlx);
 	// mlx_terminate(data.mlx);
-	
+
 	return (EXIT_SUCCESS);
 }
