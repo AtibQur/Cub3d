@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 10:55:59 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/15 14:19:34 by hqureshi         ###   ########.fr       */
+/*   Created: 2022/11/22 11:54:08 by hqureshi          #+#    #+#             */
+/*   Updated: 2022/11/22 11:58:54 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "cub3d.h"
 
-
-void	cub3d(void)
+void    exit_game(char *str, int exit_num)
 {
-
+    if (exit_num == 1)
+    {
+        printf("%s", str);
+        exit(exit_num);
+    }
 }

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_cub_extension.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 14:46:09 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/02 16:16:41 by hqureshi         ###   ########.fr       */
+/*   Created: 2022/11/21 11:38:10 by hqureshi          #+#    #+#             */
+/*   Updated: 2022/12/02 16:18:21 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int main(int argc, char **argv)
+void    check_cub_extension(char *file)
 {
-	t_data data;
-	t_player player;
-
-	init_game(&data, argc, argv);
-	parse_map(&data);
-	// init_data(&data);
-	player = init_player(&data);
-	data.player = &player;
-	mlx_image_to_window(data.mlx, data.mlx_image, 0, 0);
-  	draw_floor_ceiling(&data);
-  	draw_wall(&data);
-	mlx_loop_hook(data.mlx, &hook, &data);
-	mlx_loop(data.mlx);
-	mlx_terminate(data.mlx);
-	return (EXIT_SUCCESS);
+    size_t      length;
+    const char* str;
+    
+    length = ft_strlen(file);
+    str = &file[length-4];
+    if (strncmp(str, ".cub", 4))
+        exit_game("Use a file that uses .cub extension", 1);
 }

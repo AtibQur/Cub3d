@@ -1,106 +1,107 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   get_next_line_utils.c                              :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Tessa <tvan-der@student.codam.nl>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/03/10 10:36:31 by Tessa         #+#    #+#                 */
-/*   Updated: 2022/05/06 15:38:21 by tvan-der      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/16 10:52:09 by hqureshi          #+#    #+#             */
+/*   Updated: 2022/03/16 10:52:10 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-int	find_new_line(char *str)
+char	*ft_find_char(char *string, int c)
 {
 	int	i;
 
-	if (!str)
+	i = 0;
+	if (!string)
 		return (0);
-	i = 0;
-	while (str[i] != '\0')
+	while (string[i] != '\0')
 	{
-		if (str[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	get_index(char *str)
-{
-	int	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '\n')
-			return (i);
-		i++;
-	}
-	return (i);
-}
-
-void	ft_strcpy(char *dst, char *src)
-{
-	int	i;
-
-	if (!src)
-		return ;
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-}
-
-int	ft_strcorrect(char *str)
-{
-	int	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '\n')
+		if (string[i] == (char) c)
 		{
-			ft_strcpy(str, str + i + 1);
-			return (1);
+			return ((char *)&string[i]);
 		}
 		i++;
 	}
 	return (0);
 }
 
-char	*get_joined(char *str1, char *str2)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int		i;
-	int		len_str1;
-	int		len_str2;
-	char	*new;
+	size_t	i;
+	size_t	j;
+	size_t	s_len;
+	char	*dest;
 
-	if (!str2)
-		return (str1);
-	len_str1 = get_index(str1);
-	len_str2 = get_index(str2);
-	new = (char *)malloc(sizeof(char) * (len_str1 + len_str2 + 1 + 1));
-	if (!new)
-		return (NULL);
-	ft_strcpy(new, str1);
-	free(str1);
-	i = 0;
-	while (str2[i] != '\0' && i < len_str2 + 1)
+	if (!s)
+		return (0);
+	s_len = ft_gnl_strlen(s);
+	dest = (char *)malloc(len + 1);
+	if (!dest)
 	{
-		new[len_str1] = str2[i];
-		len_str1++;
+		free(dest);
+		return (0);
+	}
+	i = start;
+	j = 0;
+	while (j < len && s_len >= start)
+	{
+		dest[j] = s[i];
+		j++;
 		i++;
 	}
-	new[len_str1] = '\0';
-	return (new);
+	dest[j] = '\0';
+	return (dest);
+}
+
+size_t	ft_gnl_strlen(const char *str)
+{
+	size_t	count;
+
+	count = 0;
+	while (str[count] != '\0')
+	{
+		count++;
+	}
+	return (count);
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t num)
+{
+	int		count;
+	char	*src_char;
+	char	*dest_char;
+
+	src_char = (char *) src;
+	dest_char = (char *) dest;
+	count = 0;
+	if (dest == src)
+		return (dest_char);
+	while (num--)
+	{
+		dest_char[count] = src_char[count];
+		count++;
+	}
+	return (dest_char);
+}
+
+char	*ft_gnl_strdup(const char *s1)
+{
+	char	*ptr;
+	int		size;
+
+	size = ft_gnl_strlen(s1) + 1;
+	ptr = malloc(size);
+	if (!ptr)
+	{
+		free(ptr);
+		return (NULL);
+	}
+	if (ptr)
+		ft_memcpy(ptr, s1, size);
+	return (ptr);
 }

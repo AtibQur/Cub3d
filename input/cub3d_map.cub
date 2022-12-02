@@ -4,8 +4,9 @@ WE ./test_textures/barrel.png
 EA ./test_textures/barrel.png
 
 F 220,100,0
-C 22,30,0
-1111
-1001
-10N1
-1111
+C 225,30,0
+1111111
+1000001
+1000001
+100N001
+1111111

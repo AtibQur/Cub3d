@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_correct_values.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 14:46:09 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/02 16:16:41 by hqureshi         ###   ########.fr       */
+/*   Created: 2022/11/23 10:09:02 by hqureshi          #+#    #+#             */
+/*   Updated: 2022/11/23 12:09:10 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int main(int argc, char **argv)
+// Check for the first 6 loops if there are not any other values,
+// if there are any other values, the map is wrong and should exit
+int check_correct_values(char *line)
 {
-	t_data data;
-	t_player player;
-
-	init_game(&data, argc, argv);
-	parse_map(&data);
-	// init_data(&data);
-	player = init_player(&data);
-	data.player = &player;
-	mlx_image_to_window(data.mlx, data.mlx_image, 0, 0);
-  	draw_floor_ceiling(&data);
-  	draw_wall(&data);
-	mlx_loop_hook(data.mlx, &hook, &data);
-	mlx_loop(data.mlx);
-	mlx_terminate(data.mlx);
-	return (EXIT_SUCCESS);
+    if (line[0] != 'N' && line[0] != 'S' && line[0] != 'W' && line[0] &&\
+    line[0] != 'E' && line[0] != 'F' && line[0] != 'C' && line[0] != '\n' && \
+    line[0] != '\0')
+        return (1);
+    return (0);
 }

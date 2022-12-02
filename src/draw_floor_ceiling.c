@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw_floor_ceiling.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 14:46:09 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/02 16:16:41 by hqureshi         ###   ########.fr       */
+/*   Created: 2022/11/25 14:24:55 by hqureshi          #+#    #+#             */
+/*   Updated: 2022/11/28 11:24:27 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int main(int argc, char **argv)
+void draw_floor_ceiling(t_data *data)
 {
-	t_data data;
-	t_player player;
+    int y = 0;
 
-	init_game(&data, argc, argv);
-	parse_map(&data);
-	// init_data(&data);
-	player = init_player(&data);
-	data.player = &player;
-	mlx_image_to_window(data.mlx, data.mlx_image, 0, 0);
-  	draw_floor_ceiling(&data);
-  	draw_wall(&data);
-	mlx_loop_hook(data.mlx, &hook, &data);
-	mlx_loop(data.mlx);
-	mlx_terminate(data.mlx);
-	return (EXIT_SUCCESS);
+    while (y < screenHeight)
+    {
+        int x = 0;
+        while (x < screenWidth)
+        {
+            if (y > (screenHeight / 2))
+                mlx_put_pixel(data->mlx_image, x, y, data->map.c_color);
+            else
+                mlx_put_pixel(data->mlx_image, x, y, data->map.f_color);
+            x++;
+        }
+        y++;
+    }
 }
