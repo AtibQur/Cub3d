@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/02 16:13:09 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/02 17:07:35 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include <fcntl.h>
 # include <string.h>
 
-# define screenWidth 640
-# define screenHeight 480
+# define SCREENWIDTH 640
+# define SCREENHEIGHT 480
 # define mapWidth 24
 # define mapHeight 24
 
@@ -44,6 +44,9 @@ typedef struct s_map {
     int         height;
     int         existing_player;
     int         player_inside_walls;
+    char        player_dir;
+    double      player_pos_x;
+    double      player_pos_y;
 }       t_map;
 
 typedef struct s_texture {
@@ -53,20 +56,6 @@ typedef struct s_texture {
     mlx_texture_t   *ea_texture;
 }       t_texture;
 
-typedef struct s_data {
-    mlx_t       *mlx;
-    mlx_image_t *mlx_image;
-    // mlx_texture *mlx_texture;
-    // mlx_image_t *background_image;
-    // mlx_image_t *player_image;
-    // int         posX;
-    // int         posY;
-    t_map       map;
-    t_texture   texture;
-    char        *file_name;
-
-    char        *test;
-}       t_data;
 typedef struct	s_player {
     double      pos_x;
     double      pos_y;
@@ -99,19 +88,20 @@ typedef struct	s_ray {
 	double 		walldist;
 }				t_ray;
 
-typedef struct	s_data {
-    mlx_t           *mlx;
-    mlx_image_t 	*mlx_image;
+typedef struct s_data {
+    mlx_t       *mlx;
+    mlx_image_t *mlx_image;
+    // mlx_texture *mlx_texture;
+    // mlx_image_t *background_image;
+    // mlx_image_t *player_image;
+    // int         posX;
+    // int         posY;
+    t_map       map;
+    t_texture   texture;
 	t_player 		*player;
-	// t_ray 	        *ray;
-    // int         f_color;
-    // int         c_color;
-    // int         n_text;
-    // int         e_text;
-    // int         s_text;
-    // int         w_text;
-    int         player_dir;
-}				t_data;
+    char        *file_name;
+    char        *test;
+}       t_data;
 
 // main
 int		main(int argc, char **argv);
@@ -135,16 +125,16 @@ void    draw_vertical_line(t_data *data, t_ray *ray);
 void		hook(void *param);
 
 //init all data
-void    	init_data(t_data *data);
+// void    	init_data(t_data *data);
 t_player 	init_player(t_data *data);
 void	    init_ray_to_zero(t_ray *ray);
 void	    init_ray(t_data *data, t_ray *ray);
 
 //raycast
-void intersect(double pos_x, double pos_y, t_ray *ray);
-void dda(t_ray *ray);
+void intersect(t_data *data, t_ray *ray);
+void dda(char **map, t_ray *ray);
 void    calculate_wall_height(t_ray *ray);
-void    get_color(t_ray *ray);
+void    get_color(char **map, t_ray *ray);
 
 // parse all incoming data
 int     return_double(int num);
