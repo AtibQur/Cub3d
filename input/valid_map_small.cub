@@ -1,12 +1,11 @@
-NO ./textures/north
-SO ./textures/south
-WE ./textures/west
-EA ./textures/east
+NO ./test_textures/barrel.png
+SO ./test_textures/barrel.png
+WE ./test_textures/barrel.png
+EA ./test_textures/barrel.png
 
 F 220,100,0
 C 22,30,0
-
 1111
 1001
-1001
+10N1
 1111

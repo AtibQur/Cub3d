@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:37:23 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/30 12:56:11 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/02 13:39:17 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void    init_data(t_data *data, char **argv)
 	data->map.c_color = 0;
     data->map.map_start = 0;
     data->map.existing_player = 0;
+    data->map.player_inside_walls = 0;
 }
 
 void    init_game(t_data *data, int argc, char **argv)
