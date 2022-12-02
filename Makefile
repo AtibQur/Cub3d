@@ -1,7 +1,8 @@
 NAME = cub3d
 
 VPATH = src:\
-		src/parser
+		src/parser\
+		src/top_view
 
 HEADER = inc/
 
@@ -20,15 +21,18 @@ SRC_DIR = src
 # INC	:=	-I $(INCLUDE_DIR)
 INC = -Ilibft -Iinc -I
 
-SRCS =	top_view/main.c \
+SRCS =	main.c \
 		cub3d.c \
+		hook.c \
+		draw_wall.c \
 		init_data.c \
-		parser/check_input.c \
+		raycast.c\
+		parser/check_input.c
 
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
 ifdef DEBUG
- CFLAGS = -Wextra -Wall -Werror -fsanitize=address -g
+ CFLAGS = -Wextra -Wall -Werror -fsanitize=undefined -g
  LIBFT_MAKE = make debug -sC lib/libft
 else
  CFLAGS = -Wextra -Wall -Werror -g

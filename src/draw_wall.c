@@ -1,44 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   draw_wall.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 14:31:45 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/21 15:22:43 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   draw_wall.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/18 14:31:45 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/12/02 15:46:30 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int worldMap[mapWidth][mapHeight]=
+// int worldMap[mapWidth][mapHeight]=
+// {
+//   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+//   {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
+//   {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+// };
+
+int worldMap[mapWidth][mapHeight] = 
 {
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+  {1,1,1,1,1},
+  {2,0,0,0,4},
+  {2,0,0,0,4},
+  {2,0,0,0,4},
+  {3,3,3,3,3}
 };
+
+int	wall_collision(t_player *player)
+{
+  int map_x;
+  int map_y;
+
+  map_x = (int)(player->pos_x);
+  map_y = (int)(player->pos_y);
+  if (worldMap[map_x][map_y] == 0)
+    return (0);
+  else
+    return (1);
+}
 
 void draw_floor_ceiling(t_data *data)
 {
@@ -50,9 +72,9 @@ void draw_floor_ceiling(t_data *data)
         while (x < screenWidth)
         {
             if (y > (screenHeight / 2))
-                mlx_put_pixel(data->mlx_image, x, y, 0xFF000000);
+                mlx_put_pixel(data->mlx_image, x, y, 0xFF000000); //floor
             else
-                mlx_put_pixel(data->mlx_image, x, y, 0xFF00FF00);
+                mlx_put_pixel(data->mlx_image, x, y, 0xFF00FF00); //ceiling
                 
             x++;
         }
@@ -60,100 +82,82 @@ void draw_floor_ceiling(t_data *data)
     }
 }
 
-void draw_wall(t_data *data)
+void    draw_vertical_line(t_data *data, t_ray *ray)
 {
-	int x;
-
-	x = 0;
-	while (x < data->mlx->width)  
-	{
-    	double cameraX = 2 * x / (double)data->mlx->width - 1;
-      	double rayDirX = data->dirX + data->planeX * cameraX;
-      	double rayDirY = data->dirY + data->planeY * cameraX;
-      	data->mapX = (int)(data->posX);
-      	data->mapY = (int)(data->posY);
-		
-    	double sideDistX;
-    	double sideDistY;
-
-		double deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
-    	double deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
-      	double perpWallDist;
-
-		int stepX;
-    	int stepY;
-    	data->hit = 0;
-    	int side;
-
-    	if(rayDirX < 0)
-    	{
-    		stepX = -1;
-    		sideDistX = (data->posX - data->mapX) * deltaDistX;
-    	}
-    	else
-    	{
-    		stepX = 1;
-        	sideDistX = (data->mapX + 1.0 - data->posX) * deltaDistX;
-      	}
-		if(rayDirY < 0)
-		{
-			stepY = -1;
-			sideDistY = (data->posY - data->mapY) * deltaDistY;
-		}
-		else
-		{
-			stepY = 1;
-			sideDistY = (data->mapY + 1.0 - data->posY) * deltaDistY;
-		}
-
-		//perform DDA
-    	while(data->hit == 0)
-    	{
-			if(sideDistX < sideDistY)
-			{
-				sideDistX += deltaDistX;
-				data->mapX += stepX;
-				side = 0;
-			}
-			else
-			{
-				sideDistY += deltaDistY;
-				data->mapY += stepY;
-				side = 1;
-			}
-			if (worldMap[data->mapX][data->mapY] > 0) 
-				data->hit = 1;
-		}
-
-      if(side == 0) perpWallDist = (sideDistX - deltaDistX);
-      else          perpWallDist = (sideDistY - deltaDistY);
-
-      //Calculate height of line to draw on screen
-      data->lineHeight = (int)(data->mlx->height) / perpWallDist;
-
-      //calculate lowest and highest pixel to fill in current stripe
-      int drawStart = -data->lineHeight / 2 + data->mlx->height / 2;
-      if(drawStart < 0) drawStart = 0;
-      int drawEnd = data->lineHeight / 2 + data->mlx->height / 2;
-      if(drawEnd >= data->mlx->height) drawEnd = data->mlx->height - 1;
-
-      //choose wall color
-	  int color;
-      switch(worldMap[data->mapX][data->mapY])
-      {
-        case 1:  color = RGB_RED;    break;  
-        case 2:  color = RGB_GREEN;  break;
-        case 3:  color = RGB_BLUE;   break;
-        case 4:  color = RGB_WHITE;  break;
-      }
-
-      //give x and y sides different brightness
-    	//   if(side == 1) {color = color / 2;}
-        while (drawStart < drawEnd)
-        {
-        	mlx_put_pixel(data->mlx_image, x, drawStart, color);
-        	drawStart++;
-        }
-        x++;
+    while (ray->drawstart < ray->drawend)
+    {
+      mlx_put_pixel(data->mlx_image, ray->column_x, ray->drawstart, ray->color);
+      ray->drawstart++;
     }
+}
+
+void dda(t_ray *ray)
+{
+    int i = 0;
+    if(ray->sidedist_x < ray->sidedist_y)
+    {
+        ray->sidedist_x += ray->deltadist_x;
+        ray->map_x += ray->step_x;
+        ray->side = 0;
+    }
+    else
+    {
+        ray->sidedist_y += ray->deltadist_y;
+        ray->map_y += ray->step_y;
+        ray->side = 1;
+    }
+    if (worldMap[ray->map_x][ray->map_y] > 0) 
+        ray->hit = 1;
+    // printf("after iteration %d -> side distance x = %f & side distance y = %f\n", i, ray->sidedist_x, ray->sidedist_y);
+    i++;
+}
+
+void    get_color(t_ray *ray)
+{
+    if (worldMap[ray->map_x][ray->map_y] == 1)
+    {
+      ray->color = RGB_RED;
+      return ;
+    }
+    else if (worldMap[ray->map_x][ray->map_y] == 2)
+    {
+      ray->color = RGB_GREEN;
+      return ;
+    }
+    else if (worldMap[ray->map_x][ray->map_y] == 3)
+    {
+      ray->color = RGB_BLUE;
+      return ;
+    }
+    else if (worldMap[ray->map_x][ray->map_y] == 4)
+    {
+      ray->color = RGB_WHITE;
+      return ;
+    }
+}
+
+void    draw_wall(t_data *data)
+{
+  t_player  *player;
+  t_ray     ray;
+
+	player = data->player;
+  ray.column_x = 0;
+  // init_ray_to_zero(&ray);
+	while (ray.column_x < screenWidth)  
+	{
+    // printf("------ for x: %d ------\n", ray.column_x);
+    init_ray(data, &ray);
+    intersect(player->pos_x, player->pos_y, &ray);
+    while(ray.hit == 0)
+      dda(&ray);
+    // printf("side = %d\n", ray.side);
+    // printf("after dda side distance x = %f & side distance y = %f\n", ray.sidedist_x, ray.sidedist_y);
+    calculate_wall_height(&ray);
+    // printf("drawstart = %d & drawend = %d\n", ray.drawstart, ray.drawend);
+    get_color(&ray);
+    // printf("color is %d\n\n", ray.color);
+    draw_vertical_line(data, &ray);
+    ray.column_x++;
+  }
 }
