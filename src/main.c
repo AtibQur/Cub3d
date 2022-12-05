@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/14 14:46:09 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/05 16:00:08 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/05 16:11:08 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 
 	init_game(&data, argc, argv);
 	parse_map(&data);
-	print_map(&data);
+	// print_map(&data);
 	player = init_player(&data);
 	data.player = &player;
 	mlx_image_to_window(data.mlx, data.mlx_image, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/22 11:31:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/05 16:00:38 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/05 16:09:00 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int add_player_pos(t_map *map, char c, int *k, int i)
     if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
     {
         map->map[i][*k] = '0';
-        *k += 1;
         map->player_dir = c;
         map->player_pos_x = *k;
         map->player_pos_y = i;
