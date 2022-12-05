@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/02 17:07:35 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3d.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/12/05 14:31:32 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,12 @@ void    draw_vertical_line(t_data *data, t_ray *ray);
 
 // hook.c
 void		hook(void *param);
+void	move_backward(char **map, t_player *player);
+void	move_forward(char **map, t_player *player);
+void	move_left(char **map, t_player *player);
+void	move_right(char **map, t_player *player);
+void	rotate_left(t_player *player);
+void	rotate_right(t_player *player);
 
 //init all data
 // void    	init_data(t_data *data);
