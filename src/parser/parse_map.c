@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 11:31:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/05 14:26:12 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parse_map.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/22 11:31:29 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/12/05 16:00:38 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int add_player_pos(t_map *map, char c, int *k, int i)
         map->player_dir = c;
         map->player_pos_x = *k;
         map->player_pos_y = i;
+        *k += 1;
         return (1);
     }
     return (0);

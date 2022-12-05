@@ -34,6 +34,9 @@ SRCS =	main.c \
 		error_management/check_width_height.c \
 		error_management/check_cub_extension.c \
 		error_management/check_correct_values.c \
+		key_hook/hook.c \
+		key_hook/move.c \
+		key_hook/rotate.c \
 		parser/parse_map.c
 
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
