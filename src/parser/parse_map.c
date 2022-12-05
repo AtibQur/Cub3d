@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:31:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/02 17:21:53 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:26:12 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,36 +32,9 @@ void    copy_map_chars(t_map *map, char c, int *k, int i)
 // add player in the map and also show direction depending on "NSWE"
 int add_player_pos(t_map *map, char c, int *k, int i)
 {
-    if (c == 'N')
+    if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
     {
-        map->map[i][*k] = 0;
-        *k += 1;
-        map->player_dir = c;
-        map->player_pos_x = *k;
-        map->player_pos_y = i;
-        return (1);
-    }
-    else if (c == 'S')
-    {
-        map->map[i][*k] = c;
-        *k += 1;
-        map->player_dir = c;
-        map->player_pos_x = *k;
-        map->player_pos_y = i;
-        return (1);
-    }
-    else if (c == 'W')
-    {
-        map->map[i][*k] = c;
-        *k += 1;
-        map->player_dir = c;
-        map->player_pos_x = *k;
-        map->player_pos_y = i;
-        return (1);
-    }
-    else if (c == 'E')
-    {
-        map->map[i][*k] = c;
+        map->map[i][*k] = '0';
         *k += 1;
         map->player_dir = c;
         map->player_pos_x = *k;
@@ -101,8 +74,10 @@ void    copy_map(t_data *data, t_map *map, int fd)
             if (player_pos(data, line, j))
                 j += add_player_pos(map, line[j], &k, i);
             else
+            {
                 copy_map_chars(map, line[j], &k, i);
                 j++;
+            }
         }
         free(line);
         line = get_next_line(fd);
@@ -169,5 +144,5 @@ void    parse_map(t_data *data)
     check_cub_extension(data->file_name); // check extension name
     check_elements(data, fd); // check for elements and save values in map struct
     start_parsing(data, &data->map, fd);
-    // check_walls(data);
+    check_walls(data);
 }
