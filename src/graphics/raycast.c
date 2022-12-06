@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   raycast.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/12/01 17:21:23 by tvan-der      #+#    #+#                 */
-/*   Updated: 2022/12/05 15:54:25 by tvan-der      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   raycast.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/01 17:21:23 by tvan-der          #+#    #+#             */
+/*   Updated: 2022/12/06 14:53:54 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void intersect(t_data *data, t_ray *ray)
 {
     double pos_x;
     double pos_y;
-    data->test = NULL;
 
     pos_x = data->player->pos_x;
     // pos_x = data->map.player_pos_x;
@@ -47,20 +46,23 @@ void intersect(t_data *data, t_ray *ray)
 
 void dda(char **map, t_ray *ray)
 {
-    if(ray->sidedist_x < ray->sidedist_y)
+    while(ray->hit == 0)
     {
-        ray->sidedist_x += ray->deltadist_x;
-        ray->map_x += ray->step_x;
-        ray->side = 0;
+      if(ray->sidedist_x < ray->sidedist_y)
+      {
+          ray->sidedist_x += ray->deltadist_x;
+          ray->map_x += ray->step_x;
+          ray->side = 0;
+      }
+      else
+      {
+          ray->sidedist_y += ray->deltadist_y;
+          ray->map_y += ray->step_y;
+          ray->side = 1;
+      }
+      if (map[ray->map_y][ray->map_x] > '0')
+          ray->hit = 1;
     }
-    else
-    {
-        ray->sidedist_y += ray->deltadist_y;
-        ray->map_y += ray->step_y;
-        ray->side = 1;
-    }
-    if (map[ray->map_y][ray->map_x] > '0')
-        ray->hit = 1;
 }
 
 void    calculate_wall_height(t_ray *ray)
@@ -79,4 +81,3 @@ void    calculate_wall_height(t_ray *ray)
     if (ray->drawend >= SCREENHEIGHT)
       ray->drawend = SCREENHEIGHT - 1;
 }
-

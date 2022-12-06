@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   draw_wall.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/11/18 14:31:45 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/05 15:38:15 by tvan-der      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   draw_wall.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/18 14:31:45 by hqureshi          #+#    #+#             */
+/*   Updated: 2022/12/06 14:51:22 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 //   else
 //     return (1);
 // }
-
 
 void    draw_vertical_line(t_data *data, t_ray *ray)
 {
@@ -68,20 +67,22 @@ void    draw_wall(t_data *data)
 	player = data->player;
   ray.column_x = 0;
   // init_ray_to_zero(&ray);
-	while (ray.column_x < SCREENWIDTH)  
-	{
-    // printf("------ for x: %d ------\n", ray.column_x);
-    init_ray(data, &ray);
-    intersect(data, &ray);
-    while(ray.hit == 0)
-      dda(data->map.map, &ray);
-    // printf("side = %d\n", ray.side);
-    // printf("after dda side distance x = %f & side distance y = %f\n", ray.sidedist_x, ray.sidedist_y);
-    calculate_wall_height(&ray);
-    // printf("drawstart = %d & drawend = %d\n", ray.drawstart, ray.drawend);
-    get_color(data->map.map, &ray);
-    // printf("color is %d\n\n", ray.color);
-    draw_vertical_line(data, &ray);
-    ray.column_x++;
-  }
+    while (ray.column_x < SCREENWIDTH)  
+    {
+      // printf("------ for x: %d ------\n", ray.column_x);
+      init_ray(data, &ray);
+      intersect(data, &ray);
+      // while(ray.hit == 0)
+        dda(data->map.map, &ray);
+      // printf("side = %d\n", ray.side);
+      // printf("after dda side distance x = %f & side distance y = %f\n", ray.sidedist_x, ray.sidedist_y);
+      calculate_wall_height(&ray);
+      // printf("drawstart = %d & drawend = %d\n", ray.drawstart, ray.drawend);
+      get_color(data->map.map, &ray);
+      if (ray.side == 0)
+        ray.color = ray.color / 2;
+      // printf("color is %d\n\n", ray.color);
+      draw_vertical_line(data, &ray);
+      ray.column_x++;
+    }
 }
