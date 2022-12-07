@@ -1,0 +1,7 @@
+NO ./test_textures/barrel.png
+SO ./test_textures/barrel.png
+WE ./test_textures/barrel.png
+EA ./test_textures/barrel.png
+
+F 220,100,0
+C 225,30,0

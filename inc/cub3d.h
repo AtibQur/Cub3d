@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   cub3d.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/06 14:27:03 by tvan-der      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
+/*   Updated: 2022/12/07 10:59:42 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,11 @@ typedef struct s_data {
     t_map       map;
     t_texture   texture;
 	t_player 		*player;
+    t_ray       ray;
     char        *file_name;
     char        *test;
+    double      step;
+    
 }       t_data;
 
 // main

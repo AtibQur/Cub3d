@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   raycast.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/12/01 17:21:23 by tvan-der      #+#    #+#                 */
-/*   Updated: 2022/12/07 10:53:06 by tvan-der      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   raycast.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/01 17:21:23 by tvan-der          #+#    #+#             */
+/*   Updated: 2022/12/07 11:02:48 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void intersect(t_data *data, t_ray *ray)
 
 void dda(char **map, t_ray *ray)
 {
-    if(ray->sidedist_x < ray->sidedist_y)
+    while(ray->hit == 0)
     {
         ray->sidedist_x += ray->deltadist_x;
         ray->map_x += ray->step_x;
@@ -77,4 +77,3 @@ void    calculate_wall_height(t_ray *ray)
     if (ray->drawend >= SCREENHEIGHT)
       ray->drawend = SCREENHEIGHT - 1;
 }
-
