@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 17:21:23 by tvan-der          #+#    #+#             */
-/*   Updated: 2022/12/07 11:02:48 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/07 11:06:18 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void intersect(t_data *data, t_ray *ray)
 
 void dda(char **map, t_ray *ray)
 {
-    while(ray->hit == 0)
+    if (ray->sidedist_x < ray->sidedist_y)
     {
         ray->sidedist_x += ray->deltadist_x;
         ray->map_x += ray->step_x;
