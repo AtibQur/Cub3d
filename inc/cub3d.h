@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/05 14:31:32 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/06 14:27:03 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ typedef struct	s_player {
 	double      plane_x;
     double      plane_y;
     double      camera_x;
+    double      move_speed;
+    double      rot_speed;
 }				t_player;
 
 typedef struct	s_ray {
@@ -74,7 +76,7 @@ typedef struct	s_ray {
  	int			lineheight;
 	int			drawstart;
 	int			drawend;
-	int			color;
+	unsigned int    color;
     int         step_x;
     int         step_y;
     int         side;
@@ -127,8 +129,7 @@ void	move_backward(char **map, t_player *player);
 void	move_forward(char **map, t_player *player);
 void	move_left(char **map, t_player *player);
 void	move_right(char **map, t_player *player);
-void	rotate_left(t_player *player);
-void	rotate_right(t_player *player);
+void	rotate(t_player *player, double move_speed);
 
 //init all data
 // void    	init_data(t_data *data);

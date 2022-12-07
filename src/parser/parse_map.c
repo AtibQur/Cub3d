@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/22 11:31:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/05 16:09:00 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/06 14:14:33 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int add_player_pos(t_map *map, char c, int *k, int i)
     {
         map->map[i][*k] = '0';
         map->player_dir = c;
-        map->player_pos_x = *k;
-        map->player_pos_y = i;
+        map->player_pos_x = *k + 0.5;
+        map->player_pos_y = i + 0.5;
         *k += 1;
         return (1);
     }
