@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   save_wall_textures.c                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 11:59:11 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/25 16:15:50 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   save_wall_textures.c                               :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/23 11:59:11 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/12/08 15:55:49 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// wall no/so/we/ea shows that they exist and loads wall textures
 void	no_wall(t_data *data, char *str)
 {
 	data->texture.no_texture = mlx_load_png(str);

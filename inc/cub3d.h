@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/07 10:59:42 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3d.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/12/08 16:55:03 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include <math.h>
 # include <unistd.h>
-# include <memory.h>
+# include <memory.h> //???
 # include <fcntl.h>
 # include <string.h>
 
@@ -49,6 +49,13 @@ typedef struct s_map {
     double      player_pos_y;
 }       t_map;
 
+// typedef struct s_texture {
+//     mlx_image_t   *no_texture;
+//     mlx_image_t   *so_texture;
+//     mlx_image_t   *we_texture;
+//     mlx_image_t   *ea_texture;
+// }       t_texture;
+
 typedef struct s_texture {
     mlx_texture_t   *no_texture;
     mlx_texture_t   *so_texture;
@@ -76,7 +83,7 @@ typedef struct	s_ray {
  	int			lineheight;
 	int			drawstart;
 	int			drawend;
-	unsigned int    color;
+	uint32_t    color;
     int         step_x;
     int         step_y;
     int         side;
@@ -93,23 +100,16 @@ typedef struct	s_ray {
 typedef struct s_data {
     mlx_t       *mlx;
     mlx_image_t *mlx_image;
-    // mlx_texture *mlx_texture;
-    // mlx_image_t *background_image;
-    // mlx_image_t *player_image;
-    // int         posX;
-    // int         posY;
+    char	    *img_addr;
     t_map       map;
     t_texture   texture;
-	t_player 		*player;
+	t_player 	*player;
     t_ray       ray;
     char        *file_name;
     char        *test;
     double      step;
     
 }       t_data;
-
-// main
-int		main(int argc, char **argv);
 
 // draw functions
 void    draw_wall(t_data *data);

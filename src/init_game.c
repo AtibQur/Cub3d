@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 11:37:23 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/07 11:00:38 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   init_game.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/22 11:37:23 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/12/08 14:18:45 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_player init_player(t_data *data)
         player = set_perspective(0.0, 1.0, -0.66, 0.0);
     else if (data->map.player_dir == 'W')
         player = set_perspective(-1.0, 0.0, 0.0, -0.66);
-    printf("pos x = %f & pos y = %f\n", data->map.player_pos_x, data->map.player_pos_y);
+    // printf("pos x = %f & pos y = %f\n", data->map.player_pos_x, data->map.player_pos_y);
     player.pos_x = data->map.player_pos_x;
     player.pos_y = data->map.player_pos_y;
     player.move_speed = 0.1;

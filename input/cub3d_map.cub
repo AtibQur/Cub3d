@@ -1,10 +1,10 @@
-NO ./test_textures/barrel.png
-SO ./test_textures/barrel.png
-WE ./test_textures/barrel.png
-EA ./test_textures/barrel.png
+NO ./textures/chess_board.png
+SO ./textures/barrel.png
+WE ./textures/barrel.png
+EA ./textures/chess_board.png
 
-F 125,100,50
-C 190,30,130
+F 0,0,0
+C 0,0,0
 
         1111111111111111111111111
         1000000000110000000000001
