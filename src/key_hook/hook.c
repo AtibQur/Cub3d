@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 16:31:13 by tvan-der          #+#    #+#             */
-/*   Updated: 2022/12/07 11:02:55 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   hook.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/16 16:31:13 by tvan-der      #+#    #+#                 */
+/*   Updated: 2022/12/09 11:16:57 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ void	hook(void *param)
 	mlx_delete_image(data->mlx, data->mlx_image);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 			mlx_close_window(data->mlx);
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
 		move_left(map, player);
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
 		move_right(map, player);
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_W))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
 		move_forward(map, player);
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_S))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
 		move_backward(map, player);
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
 		rotate(player, player->move_speed);
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
 		rotate(player, -player->move_speed);
 	data->mlx_image = mlx_new_image(data->mlx, SCREENWIDTH, SCREENHEIGHT);
     if (!data->mlx_image)

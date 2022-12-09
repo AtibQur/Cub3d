@@ -6,13 +6,13 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/18 14:31:45 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/08 17:36:20 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/09 11:15:22 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
       
-mlx_texture_t *get_texture_image(t_data *data, t_ray *ray)
+mlx_texture_t *get_texture(t_data *data, t_ray *ray)
 {
 	if (ray->side == 0 && ray->step_x == 1)
 		return (data->texture.no_texture);
@@ -45,7 +45,7 @@ void    draw_texture(t_data *data, t_ray *ray)
     double wallX;
     mlx_texture_t *texture;
      
-    texture = get_texture_image(data, ray);
+    texture = get_texture(data, ray);
     if (ray->side == 0)
       wallX = data->player->pos_y + ray->walldist * ray->raydir_y;
     else          

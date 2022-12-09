@@ -1,6 +1,6 @@
 NO ./textures/chess_board.png
-SO ./textures/barrel.png
-WE ./textures/barrel.png
+SO ./textures/chess_board.png
+WE ./textures/chess_board.png
 EA ./textures/chess_board.png
 
 F 0,0,0
