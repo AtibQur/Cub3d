@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   cub3d.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/08 16:55:03 by tvan-der      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
+/*   Updated: 2022/12/09 14:37:02 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ typedef struct s_data {
     char        *file_name;
     char        *test;
     double      step;
-    
 }       t_data;
 
 // draw functions
@@ -125,6 +124,7 @@ void    init_game(t_data *data, int argc, char **argv);
 void    draw_wall(t_data *data);
 void    draw_floor_ceiling(t_data *data);
 void    draw_vertical_line(t_data *data, t_ray *ray);
+void	draw_minimap(t_data *data);
 
 // hook.c
 void		hook(void *param);

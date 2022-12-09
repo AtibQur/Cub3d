@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   hook.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/11/16 16:31:13 by tvan-der      #+#    #+#                 */
-/*   Updated: 2022/12/09 11:16:57 by tvan-der      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   hook.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/16 16:31:13 by tvan-der          #+#    #+#             */
+/*   Updated: 2022/12/09 13:54:57 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	hook(void *param)
 		rotate(player, player->move_speed);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
 		rotate(player, -player->move_speed);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT_SHIFT))
+		player->move_speed = 0.15;
+	else 
+		player->move_speed = 0.08;
 	data->mlx_image = mlx_new_image(data->mlx, SCREENWIDTH, SCREENHEIGHT);
     if (!data->mlx_image)
         exit_game("MLX_image failed", 1);
