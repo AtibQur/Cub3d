@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:46:09 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/09 14:17:33 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:37:20 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 	init_game(&data, argc, argv);
 	parse_map(&data);
     // printf("pos x = %f & pos y = %f\n", data.map.player_pos_x, data.map.player_pos_y);
-	print_map(&data);
+	// print_map(&data);
 	player = init_player(&data);
 	data.player = &player;
     draw_floor_ceiling(&data);

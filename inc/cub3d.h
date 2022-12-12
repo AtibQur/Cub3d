@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/09 14:37:02 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:14:33 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct	s_ray {
 typedef struct s_data {
     mlx_t       *mlx;
     mlx_image_t *mlx_image;
+    mlx_image_t *minimap_image;
     char	    *img_addr;
     t_map       map;
     t_texture   texture;

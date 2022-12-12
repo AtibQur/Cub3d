@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:37:23 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/09 12:13:20 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:24:49 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,14 @@ void    init_data(t_data *data, char **argv)
     data->map.existing_player = 0;
     data->map.player_inside_walls = 0;
     data->map.player_dir = 0;
+    data->minimap_image = mlx_new_image(data->mlx, SCREENWIDTH, SCREENHEIGHT);
 }
 
 void    init_game(t_data *data, int argc, char **argv)
 {
     if (argc != 2)
         exit_game("Please use the right amount of arguments", 1);
-    data->mlx = mlx_init(SCREENWIDTH, SCREENHEIGHT, "Cub3d", true);
+    data->mlx = mlx_init(SCREENWIDTH, SCREENHEIGHT, "Cub3d", false);
     if (!data->mlx)
         exit_game("MLX failure", 1);
     data->mlx_image = mlx_new_image(data->mlx, SCREENWIDTH, SCREENHEIGHT);
