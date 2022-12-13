@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/09 15:14:33 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3d.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/12/13 15:44:48 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,11 @@
 # include <stdio.h>
 # include <math.h>
 # include <unistd.h>
-# include <memory.h> //???
 # include <fcntl.h>
 # include <string.h>
 
 # define SCREENWIDTH 640
 # define SCREENHEIGHT 480
-# define mapWidth 24
-# define mapHeight 24
-
-enum color {
-    RGB_RED = 0xFF0000FF,
-    RGB_GREEN = 0x00FF00FF,
-    RGB_BLUE = 0x0000FFFF,
-    RGB_WHITE = 0xFFFFFFFF,
-};
 
 typedef struct s_map {
     char        **map;
@@ -49,19 +39,20 @@ typedef struct s_map {
     double      player_pos_y;
 }       t_map;
 
-// typedef struct s_texture {
-//     mlx_image_t   *no_texture;
-//     mlx_image_t   *so_texture;
-//     mlx_image_t   *we_texture;
-//     mlx_image_t   *ea_texture;
-// }       t_texture;
-
 typedef struct s_texture {
     mlx_texture_t   *no_texture;
     mlx_texture_t   *so_texture;
     mlx_texture_t   *we_texture;
     mlx_texture_t   *ea_texture;
 }       t_texture;
+
+typedef struct s_tex_info {
+    mlx_texture_t   *texture;
+    int             tex_x;
+    int             tex_y;
+    double          step;
+    double          tex_pos;
+}              t_tex_info;
 
 typedef struct	s_player {
     double      pos_x;
@@ -83,7 +74,7 @@ typedef struct	s_ray {
  	int			lineheight;
 	int			drawstart;
 	int			drawend;
-	uint32_t    color;
+	unsigned int    color;
     int         step_x;
     int         step_y;
     int         side;
@@ -109,25 +100,16 @@ typedef struct s_data {
     char        *file_name;
     char        *test;
     double      step;
-}       t_data;
-
-// draw functions
-void    draw_wall(t_data *data);
-void    draw_floor_ceiling(t_data *data);
-
-// key hook functions
-void	hook(void *param);
+}				t_data;
 
 // initialize all game info
 void    init_data(t_data *data, char **argv);
 void    init_game(t_data *data, int argc, char **argv);
-// manageInput.c
-void    draw_wall(t_data *data);
-void    draw_floor_ceiling(t_data *data);
-void    draw_vertical_line(t_data *data, t_ray *ray);
-void	draw_minimap(t_data *data);
+t_player 	init_player(t_data *data);
+void	    init_ray_to_zero(t_ray *ray);
+void	    init_ray(t_data *data, t_ray *ray);
 
-// hook.c
+// hooks
 void		hook(void *param);
 void	move_backward(char **map, t_player *player);
 void	move_forward(char **map, t_player *player);
@@ -135,17 +117,18 @@ void	move_left(char **map, t_player *player);
 void	move_right(char **map, t_player *player);
 void	rotate(t_player *player, double move_speed);
 
-//init all data
-// void    	init_data(t_data *data);
-t_player 	init_player(t_data *data);
-void	    init_ray_to_zero(t_ray *ray);
-void	    init_ray(t_data *data, t_ray *ray);
+// drawing
+void    draw_wall(t_data *data);
+void    draw_floor_ceiling(t_data *data);
 
 //raycast
-void intersect(t_data *data, t_ray *ray);
-void dda(char **map, t_ray *ray);
+void    intersect(t_data *data, t_ray *ray);
+void    dda(char **map, t_ray *ray);
 void    calculate_wall_height(t_ray *ray);
 void    get_color(char **map, t_ray *ray);
+
+//applying textures
+void	draw_texture(t_data *data, t_ray *ray);
 
 // parse all incoming data
 int     return_double(int num);

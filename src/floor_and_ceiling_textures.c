@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   floor_and_ceiling_textures.c                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 10:44:54 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/29 13:48:17 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   floor_and_ceiling_textures.c                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/23 10:44:54 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/12/13 13:32:26 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,14 @@
 // int has 4 bytes
 // 24 << is 4, 16 << is 3, 8 << is 2, 0 << 1
 // every value gets stored in the int and creates the color outcome
+// int	rgb_color(int r, int g, int b)
+// {
+// 	return (r << 24 | g << 16 | b << 8 | 255);
+// }
+
 int	rgb_color(int r, int g, int b)
 {
-	return (r << 24 | g << 16 | b << 8 | 255);
+	return (r << 16 | g << 8 | b);
 }
 
 void	color_floor(t_data *data, char *line)
@@ -44,6 +49,7 @@ void	color_floor(t_data *data, char *line)
 		line++;
 	b = ft_atoi(line);
 	data->map.f_color = rgb_color(r, g, b);
+	printf("floor color = %x\n", data->map.f_color);
 }
 
 void	color_ceiling(t_data *data, char *line)

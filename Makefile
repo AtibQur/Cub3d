@@ -28,6 +28,7 @@ SRCS =	main.c \
 		graphics/draw_floor_ceiling.c \
 		graphics/draw_wall.c \
 		graphics/raycast.c \
+		graphics/textures.c \
 		floor_and_ceiling_textures.c \
 		error_management/check_walls.c \
 		error_management/check_elements.c \
