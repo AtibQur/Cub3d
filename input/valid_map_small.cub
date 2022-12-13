@@ -1,7 +1,7 @@
-NO ./test_textures/barrel.png
-SO ./test_textures/barrel.png
-WE ./test_textures/barrel.png
-EA ./test_textures/barrel.png
+NO ./textures/skyline1.png
+SO ./textures/stone-wall.png
+WE ./textures/barrel.png
+EA ./textures/barrel.png
 
 F 220,100,0
 C 22,30,0
