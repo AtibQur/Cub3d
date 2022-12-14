@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/14 16:52:28 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/14 17:13:37 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,13 @@ typedef struct s_data {
     char        *file_name;
     char        *test;
     double      step;
-}				t_data;
+	int			copy_map_i;
+	int			copy_map_j;
+	int			element_count;
+}       t_data;
+
+// key hook functions
+void	hook(void *param);
 
 // initialize all game info
 void    init_data(t_data *data, char **argv);
@@ -109,8 +115,8 @@ t_player 	init_player(t_data *data);
 void	    init_ray_to_zero(t_ray *ray);
 void	    init_ray(t_data *data, t_ray *ray);
 
-// hooks
-void		hook(void *param);
+// hook.c
+void	hook(void *param);
 void	move_backward(char **map, t_player *player);
 void	move_forward(char **map, t_player *player);
 void	move_left(char **map, t_player *player);
@@ -122,8 +128,8 @@ void    draw_wall(t_data *data);
 void    draw_floor_ceiling(t_data *data);
 
 //raycast
-void    intersect(t_data *data, t_ray *ray);
-void    dda(char **map, t_ray *ray);
+void 	intersect(t_data *data, t_ray *ray);
+void 	dda(char **map, t_ray *ray);
 void    calculate_wall_height(t_ray *ray);
 
 //applying textures
@@ -135,11 +141,20 @@ void    parse_map(t_data *data);
 void    start_parsing(t_data *data, t_map *map, int fd);
 void    copy_map(t_data *data, t_map *map, int fd);
 void    copy_map_chars(t_map *map, char c, int *k, int i);
+int		player_pos(t_data *data, char *line, int j);
+int		add_player_pos(t_map *map, char c, int *k, int i);
+void	copy_map_chars(t_map *map, char c, int *k, int i);
+
+// load all textures
+void	no_wall(t_data *data, char *str);
+void	so_wall(t_data *data, char *str);
+void	we_wall(t_data *data, char *str);
+void	ea_wall(t_data *data, char *str);
 char    *skip_whitespace(char *line);
 bool    ft_is_whitespace(char c);
 
 // error management
-int     check_correct_values(char *line);
+int		check_correct_values(char *line);
 void    check_walls(t_data *data);
 void    check_cub_extension(char *map);
 void    check_elements(t_data *data, int fd);

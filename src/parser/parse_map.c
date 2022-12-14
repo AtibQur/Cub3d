@@ -6,143 +6,99 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/22 11:31:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/14 11:29:03 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/14 14:43:12 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void    copy_map_chars(t_map *map, char c, int *k, int i)
+void	copy_map(t_data *data, t_map *map, int fd)
 {
-    if (c == '\t')
-    {
-        map->map[i][*k] = ' ';
-        map->map[i + 1][*k] = ' ';
-        map->map[i + 2][*k] = ' ';
-        map->map[i + 3][*k] = ' ';
-        *k += 3;
-    }
-    else if (c == ' ' || c == '0' || c == '\n' || ft_isdigit(c))
-        map->map[i][*k] = c;
-    else if (c != 'N' || c != 'S' || c != 'W' || c != 'E')
-        exit_game("Wrong map values", 1);
-    *k += 1;
+	int		k;
+	char	*line;
+
+	line = get_next_line(fd);
+	data->copy_map_i = 0;
+	while (line)
+	{
+		k = 0;
+		data->copy_map_j = 0;
+		while (line[data->copy_map_j])
+		{
+			if (player_pos(data, line, data->copy_map_j))
+				data->copy_map_j += add_player_pos(map, line[data->copy_map_j], \
+				&k, data->copy_map_i);
+			else
+			{
+				copy_map_chars(map, line[data->copy_map_j], &k, \
+				data->copy_map_i);
+				data->copy_map_j++;
+			}
+		}
+		free(line);
+		line = get_next_line(fd);
+		data->copy_map_i++;
+	}
+	if (data->map.existing_player != 1)
+		exit_game("Player is not correct", 1);
 }
 
-// add player in the map and also show direction depending on "NSWE"
-int add_player_pos(t_map *map, char c, int *k, int i)
+void	start_allocating(t_data *data, t_map *map)
 {
-    if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
-    {
-        map->map[i][*k] = '0';
-        map->player_dir = c;
-        map->player_pos_x = *k + 0.5;
-        map->player_pos_y = i + 0.5;
-        *k += 1;
-        return (1);
-    }
-    return (0);
+	int		i;
+	int		fd;
+	char	*line;
+
+	fd = open(data->file_name, O_RDONLY);
+	if (fd < 0)
+		exit_game("Choose a correct map!", 1);
+	data->map.map = calloc((data->map.height + 1), sizeof(char *));
+	i = 0;
+	while (i <= map->height)
+	{
+		data->map.map[i] = calloc((data->map.width + 1), sizeof(char));
+		i++;
+	}
+	i = 0;
+	while (i < map->map_start)
+	{
+		line = get_next_line(fd);
+		free(line);
+		i++;
+	}
+	copy_map(data, map, fd);
+	close(fd);
 }
 
-// checks if player exists for direcitons "NSWE"
-int player_pos(t_data *data, char *line, int j)
+void	start_parsing(t_data *data, t_map *map, int fd)
 {
-    if (line[j] == 'N' ||  line[j] == 'S' || line[j] == 'W' || line[j] == 'E')
-    {
-        data->map.existing_player += 1;
-        return (1);
-    }
-    return (0);
+	char	*line;
+	char	*tmp;
+
+	line = get_next_line(fd);
+	if (!line)
+		exit_game("File descriptor failed", 1);
+	while (line[0] == '\n' || line[0] == '\0')
+	{
+		tmp = line;
+		line = get_next_line(fd);
+		free(tmp);
+		data->map.map_start += 1;
+	}
+	check_width_height(map, fd, line);
+	close(fd);
+	start_allocating(data, map);
 }
 
-void    copy_map(t_data *data, t_map *map, int fd)
+void	parse_map(t_data *data)
 {
-    int i;
-    int j;
-    int k;
-    char *line;
-    data->test = NULL;
+	int	fd;
 
-    line = get_next_line(fd);
-    i = 0;
-    while (line)
-    {
-        k = 0;
-        j = 0;
-        while (line[j])
-        {
-            if (player_pos(data, line, j))
-                j += add_player_pos(map, line[j], &k, i);
-            else
-            {
-                copy_map_chars(map, line[j], &k, i);
-                j++;
-            }
-        }
-        free(line);
-        line = get_next_line(fd);
-        i++;
-    }
-    if (data->map.existing_player != 1)
-        exit_game("Player is not correct", 1);
-}
-
-void    start_allocating(t_data *data, t_map *map)
-{
-    int     i;
-    int     fd;
-    char    *line;
-    
-    fd = open(data->file_name, O_RDONLY);
-    if (fd < 0)
-        exit_game("Choose a correct map!", 1);
-    data->map.map = calloc((data->map.height + 1), sizeof(char *));
-    i = 0;
-    while (i <= map->height)
-    {
-        data->map.map[i] = calloc((data->map.width + 1), sizeof(char));
-        i++;
-    }
-    i = 0;
-    while (i < map->map_start)
-    {
-        line = get_next_line(fd);
-        free (line);
-        i++;
-    }
-    copy_map(data, map, fd);
-    close(fd);
-}
-
-void    start_parsing(t_data *data, t_map *map, int fd)
-{
-    char    *line;
-    char    *tmp;
-    
-    line = get_next_line(fd);
-    if (!line)
-        exit_game("File descriptor failed", 1);
-    while (line[0] == '\n' || line[0] == '\0')
-    {
-        tmp = line;
-        line = get_next_line(fd);
-        free(tmp);
-        data->map.map_start += 1;
-    }
-    check_width_height(map, fd, line);
-    close(fd);
-    start_allocating(data, map);
-}
-
-void    parse_map(t_data *data)
-{
-    int fd;
-
-    fd = open(data->file_name, O_RDONLY);
-    if (fd < 0)
-        exit_game("Choose a correct map!", 1);
-    check_cub_extension(data->file_name); // check extension name
-    check_elements(data, fd); // check for elements and save values in map struct
-    start_parsing(data, &data->map, fd);
-    // check_walls(data);
+	fd = open(data->file_name, O_RDONLY);
+	if (fd < 0)
+		exit_game("Choose a correct map!", 1);
+	check_cub_extension(data->file_name);
+	check_elements(data, fd);
+	start_parsing(data, &data->map, fd);
+	check_walls(data);
 }
