@@ -4,7 +4,7 @@ SO          ./textures/blue_wall.png
 EA 		./textures/steel_wall.png
 
 C 169,89,74
-F 3,      59,59
+F 3,59,59
 
                                                         111111
                                                         11010111111111

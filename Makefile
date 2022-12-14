@@ -24,7 +24,6 @@ INC = -Ilibft -Iinc -I
 SRCS =	main.c \
 		init_game.c \
 		exit_game.c \
-		save_wall_textures.c \
 		graphics/draw.c \
 		graphics/raycast.c \
 		graphics/textures.c \

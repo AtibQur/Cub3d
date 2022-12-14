@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/23 10:44:54 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/14 14:42:46 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/14 14:44:37 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char *skip_whitespace(char *line)
 
 void    check_elements(t_data *data, int fd)
 {
+	int		element_count;
 	char	*line;
 	char	*tmp;
 
