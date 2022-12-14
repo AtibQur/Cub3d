@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/22 11:31:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/06 14:14:33 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/14 11:29:03 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,5 +144,5 @@ void    parse_map(t_data *data)
     check_cub_extension(data->file_name); // check extension name
     check_elements(data, fd); // check for elements and save values in map struct
     start_parsing(data, &data->map, fd);
-    check_walls(data);
+    // check_walls(data);
 }

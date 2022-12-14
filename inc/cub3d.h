@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/13 15:44:48 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/14 14:30:07 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,6 @@ void    draw_floor_ceiling(t_data *data);
 void    intersect(t_data *data, t_ray *ray);
 void    dda(char **map, t_ray *ray);
 void    calculate_wall_height(t_ray *ray);
-void    get_color(char **map, t_ray *ray);
 
 //applying textures
 void	draw_texture(t_data *data, t_ray *ray);
@@ -136,6 +135,7 @@ void    parse_map(t_data *data);
 void    start_parsing(t_data *data, t_map *map, int fd);
 void    copy_map(t_data *data, t_map *map, int fd);
 void    copy_map_chars(t_map *map, char c, int *k, int i);
+char    *skip_whitespace(char *line);
 
 // error management
 int     check_correct_values(char *line);
