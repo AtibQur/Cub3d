@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   init_game.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/11/22 11:37:23 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/14 14:07:06 by tvan-der      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   init_game.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/22 11:37:23 by hqureshi          #+#    #+#             */
+/*   Updated: 2022/12/14 17:33:55 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@ void	init_ray(t_data *data, t_ray *ray)
 	ray->map_x = (int)(data->player->pos_x);
 	ray->map_y = (int)(data->player->pos_y);
 	ray->hit = 0;
-	ray->deltadist_x = fabs(1 / ray->raydir_x);
-	ray->deltadist_y = fabs(1 / ray->raydir_y);
-	// double deltaDistX = (rayDirX == 0) ? 1e30 : std::abs(1 / rayDirX);
-    // double deltaDistY = (rayDirY == 0) ? 1e30 : std::abs(1 / rayDirY);
+	if (ray->raydir_x == 0)
+		ray->deltadist_x = 1e30;
+	else
+		ray->deltadist_x = fabs(1 / ray->raydir_x);
+	if (ray->raydir_y == 0)
+		ray->deltadist_y = 1e30;
+	else
+		ray->deltadist_y = fabs(1 / ray->raydir_y);
 }
 
 t_player	set_perspective(double dir_x, double dir_y,

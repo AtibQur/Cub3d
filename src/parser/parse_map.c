@@ -1,40 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parse_map.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/11/22 11:31:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/14 14:43:12 by tvan-der      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/22 11:31:29 by hqureshi          #+#    #+#             */
+/*   Updated: 2022/12/14 17:41:04 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	copy_map(t_data *data, t_map *map, int fd)
+void	copy_map(t_data *data, t_map *map, char *line)
 {
 	int		k;
+
+	k = 0;
+	data->copy_map_j = 0;
+	while (line[data->copy_map_j])
+	{
+		if (player_pos(data, line, data->copy_map_j))
+			data->copy_map_j += add_player_pos(map, line[data->copy_map_j], \
+			&k, data->copy_map_i);
+		else
+		{
+			copy_map_chars(map, line[data->copy_map_j], &k, \
+			data->copy_map_i);
+			data->copy_map_j++;
+		}
+	}
+}
+
+void	read_map(t_data *data, t_map *map, int fd)
+{
 	char	*line;
 
 	line = get_next_line(fd);
 	data->copy_map_i = 0;
 	while (line)
 	{
-		k = 0;
-		data->copy_map_j = 0;
-		while (line[data->copy_map_j])
-		{
-			if (player_pos(data, line, data->copy_map_j))
-				data->copy_map_j += add_player_pos(map, line[data->copy_map_j], \
-				&k, data->copy_map_i);
-			else
-			{
-				copy_map_chars(map, line[data->copy_map_j], &k, \
-				data->copy_map_i);
-				data->copy_map_j++;
-			}
-		}
+		copy_map(data, map, line);
 		free(line);
 		line = get_next_line(fd);
 		data->copy_map_i++;
@@ -66,7 +72,7 @@ void	start_allocating(t_data *data, t_map *map)
 		free(line);
 		i++;
 	}
-	copy_map(data, map, fd);
+	read_map(data, map, fd);
 	close(fd);
 }
 
