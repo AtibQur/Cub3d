@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/01 17:21:23 by tvan-der      #+#    #+#                 */
-/*   Updated: 2022/12/13 14:17:57 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/14 13:52:26 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	intersect(t_data *data, t_ray *ray)
 {
-	ray->deltadist_x = fabs(1 / ray->raydir_x);
-	ray->deltadist_y = fabs(1 / ray->raydir_y);
 	if (ray->raydir_x < 0)
 	{
 		ray->step_x = -1;

@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 16:31:13 by tvan-der          #+#    #+#             */
-/*   Updated: 2022/12/12 12:37:16 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   hook.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/16 16:31:13 by tvan-der      #+#    #+#                 */
+/*   Updated: 2022/12/14 10:23:49 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	hook(void *param)
+void	do_key_press(t_data *data, t_player *player)
 {
-    char	**map;
-	t_data  *data;
-    t_player *player;
+	char	**map;
 
-	data = param;
 	map = data->map.map;
-	player = data->player;
-
-	mlx_delete_image(data->mlx, data->mlx_image);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
-			mlx_close_window(data->mlx);
+		mlx_close_window(data->mlx);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
 		move_left(map, player);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
@@ -39,11 +33,22 @@ void	hook(void *param)
 		rotate(player, -player->move_speed);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT_SHIFT))
 		player->move_speed = 0.15;
-	else 
+	else
 		player->move_speed = 0.08;
+}
+
+void	hook(void *param)
+{
+	t_data		*data;
+	t_player	*player;
+
+	data = param;
+	player = data->player;
+	mlx_delete_image(data->mlx, data->mlx_image);
+	do_key_press(data, player);
 	data->mlx_image = mlx_new_image(data->mlx, SCREENWIDTH, SCREENHEIGHT);
-    if (!data->mlx_image)
-        exit_game("MLX_image failed", 1);
+	if (!data->mlx_image)
+		exit_game("MLX_image failed", 1);
 	draw_floor_ceiling(data);
 	draw_wall(data);
 	mlx_image_to_window(data->mlx, data->mlx_image, 0, 0);

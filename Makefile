@@ -24,8 +24,8 @@ INC = -Ilibft -Iinc -I
 SRCS =	main.c \
 		init_game.c \
 		exit_game.c \
-		graphics/draw_floor_ceiling.c \
-		graphics/draw_wall.c \
+		save_wall_textures.c \
+		graphics/draw.c \
 		graphics/raycast.c \
 		graphics/textures.c \
 		floor_and_ceiling_textures.c \
@@ -45,7 +45,7 @@ SRCS =	main.c \
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
 ifdef DEBUG
- CFLAGS = -Wextra -Wall -Werror -fsanitize=undefined -g
+ CFLAGS = -Wextra -Wall -Werror -fsanitize=address -g
  LIBFT_MAKE = make debug -sC lib/libft
 else
  CFLAGS = -Wextra -Wall -Werror -g

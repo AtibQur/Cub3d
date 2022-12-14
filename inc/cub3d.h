@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/14 10:57:37 by hqureshi         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3d.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
+/*   Updated: 2022/12/14 14:40:53 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ void    draw_floor_ceiling(t_data *data);
 void 	intersect(t_data *data, t_ray *ray);
 void 	dda(char **map, t_ray *ray);
 void    calculate_wall_height(t_ray *ray);
-void    get_color(char **map, t_ray *ray);
 
 //applying textures
 void	draw_texture(t_data *data, t_ray *ray);
@@ -151,6 +150,7 @@ void	no_wall(t_data *data, char *str);
 void	so_wall(t_data *data, char *str);
 void	we_wall(t_data *data, char *str);
 void	ea_wall(t_data *data, char *str);
+char    *skip_whitespace(char *line);
 
 // error management
 int		check_correct_values(char *line);
