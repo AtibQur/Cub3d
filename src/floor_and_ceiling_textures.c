@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/23 10:44:54 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/14 14:38:45 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/14 17:12:30 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,55 @@ int	rgb_color(int r, int g, int b)
 	return (r << 24 | g << 16 | b << 8 | 255);
 }
 
+bool    ft_is_whitespace(char c)
+{
+    return (c == ' ' || c == '\t' || c == '\v' || c == '\f' || c == '\n' || c == '\r');
+}
+
+int	find_len_color(char *line)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (line[i])
+	{
+		if (!ft_is_whitespace(line[i]))
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+char *erase_whitespace(char *line)
+{
+	int j;
+	int count;
+	char *new;
+
+	new = ft_calloc(find_len_color(line) + 1, 1);
+	if (!new)
+		return (NULL);
+	j = 0;
+	count = 0;
+	while (*line)
+	{
+		if (!ft_is_whitespace(*line))
+		{
+			new[j] = *line;
+			j++;
+		}
+		if (*line == ',')
+			count++;
+		line++;
+	}
+	if (count >= 3)
+		exit_game("Invalid values", 1);
+	new[j] = '\0';
+	return (new);
+}
+
 int	get_color(char *line)
 {
 	int	r;
@@ -31,21 +80,15 @@ int	get_color(char *line)
 	r = 0;
 	g = 0;
 	b = 0;
-	line = skip_whitespace(line + 1);
-	if (!ft_isdigit(*line))
-		exit_game("Invalid color value", 1);
+	line = erase_whitespace(line + 1);
 	r = ft_atoi(line);
 	while (ft_isdigit(*line))
 		line++;
-	line = skip_whitespace(line);
-	if (!ft_isdigit(*line))
-		exit_game("Invalid color value", 1);
+	line++;
 	g = ft_atoi(line);
 	while (ft_isdigit(*line))
 		line++;
 	line++;
-	if (!ft_isdigit(*line))
-		exit_game("Invalid color value", 1);
 	b = ft_atoi(line);
 	return (rgb_color(r, g, b));
 }

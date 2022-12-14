@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/23 10:44:54 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/14 13:44:08 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/14 16:52:12 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 char *skip_whitespace(char *line)
 {
-	while (*line == ' ' || *line == '\t' || *line == '\v' || *line == '\f' || *line == '\r')
+	while (ft_is_whitespace(*line))
         line++;
 	return (line);
 }

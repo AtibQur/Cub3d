@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 09:48:29 by hqureshi      #+#    #+#                 */
-/*   Updated: 2022/12/14 14:30:07 by tvan-der      ########   odam.nl         */
+/*   Updated: 2022/12/14 16:52:28 by tvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void    start_parsing(t_data *data, t_map *map, int fd);
 void    copy_map(t_data *data, t_map *map, int fd);
 void    copy_map_chars(t_map *map, char c, int *k, int i);
 char    *skip_whitespace(char *line);
+bool    ft_is_whitespace(char c);
 
 // error management
 int     check_correct_values(char *line);
