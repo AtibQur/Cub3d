@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/09 15:14:33 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/14 10:46:46 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,9 @@ typedef struct s_data {
     char        *file_name;
     char        *test;
     double      step;
+	int			copy_map_i;
+	int			copy_map_j;
+	int			element_count;
 }       t_data;
 
 // draw functions
@@ -128,7 +131,7 @@ void    draw_vertical_line(t_data *data, t_ray *ray);
 void	draw_minimap(t_data *data);
 
 // hook.c
-void		hook(void *param);
+void	hook(void *param);
 void	move_backward(char **map, t_player *player);
 void	move_forward(char **map, t_player *player);
 void	move_left(char **map, t_player *player);
@@ -142,8 +145,8 @@ void	    init_ray_to_zero(t_ray *ray);
 void	    init_ray(t_data *data, t_ray *ray);
 
 //raycast
-void intersect(t_data *data, t_ray *ray);
-void dda(char **map, t_ray *ray);
+void 	intersect(t_data *data, t_ray *ray);
+void 	dda(char **map, t_ray *ray);
 void    calculate_wall_height(t_ray *ray);
 void    get_color(char **map, t_ray *ray);
 
@@ -153,9 +156,18 @@ void    parse_map(t_data *data);
 void    start_parsing(t_data *data, t_map *map, int fd);
 void    copy_map(t_data *data, t_map *map, int fd);
 void    copy_map_chars(t_map *map, char c, int *k, int i);
+int		player_pos(t_data *data, char *line, int j);
+int		add_player_pos(t_map *map, char c, int *k, int i);
+void	copy_map_chars(t_map *map, char c, int *k, int i);
+
+// load all textures
+void	no_wall(t_data *data, char *str);
+void	so_wall(t_data *data, char *str);
+void	we_wall(t_data *data, char *str);
+void	ea_wall(t_data *data, char *str);
 
 // error management
-int     check_correct_values(char *line);
+int		check_correct_values(char *line);
 void    check_walls(t_data *data);
 void    check_cub_extension(char *map);
 void    check_elements(t_data *data, int fd);

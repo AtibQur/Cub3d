@@ -6,17 +6,17 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:54:08 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/22 11:58:54 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/14 10:31:29 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void    exit_game(char *str, int exit_num)
+void	exit_game(char *str, int exit_num)
 {
-    if (exit_num == 1)
-    {
-        printf("%s", str);
-        exit(exit_num);
-    }
+	if (exit_num == 1)
+	{
+		printf("%s", str);
+		exit(exit_num);
+	}
 }

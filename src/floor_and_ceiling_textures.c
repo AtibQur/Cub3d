@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:44:54 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/11/29 13:48:17 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/14 10:32:15 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	color_floor(t_data *data, char *line)
 	int	r;
 	int	g;
 	int	b;
-	data->map.map = 0;
 
+	data->map.map = 0;
 	r = 0;
 	g = 0;
 	b = 0;
@@ -51,8 +51,8 @@ void	color_ceiling(t_data *data, char *line)
 	int	r;
 	int	g;
 	int	b;
-	data->map.map = 0;
 
+	data->map.map = 0;
 	r = 0;
 	g = 0;
 	b = 0;
@@ -80,6 +80,6 @@ void	floor_and_ceiling_textures(t_data *data, char *line)
 		color_floor(data, line);
 	else if (line[0] == 'C' && line[1] == ' ')
 		color_ceiling(data, line);
-    else
-        exit_game("Error within floor and ceiling values", 1);
+	else
+		exit_game("Error within floor and ceiling values", 1);
 }

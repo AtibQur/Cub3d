@@ -24,7 +24,6 @@ INC = -Ilibft -Iinc -I
 SRCS =	main.c \
 		init_game.c \
 		exit_game.c \
-		save_wall_textures.c \
 		graphics/draw_floor_ceiling.c \
 		graphics/draw_wall.c \
 		graphics/raycast.c \
@@ -37,7 +36,10 @@ SRCS =	main.c \
 		key_hook/hook.c \
 		key_hook/move.c \
 		key_hook/rotate.c \
-		parser/parse_map.c
+		parser/parse_map.c \
+		parser/load_textures.c \
+		parser/parse_map_utils.c \
+		parser/save_wall_textures.c \
 
 OBJS =	$(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
