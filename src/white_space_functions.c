@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:27:22 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/14 17:29:53 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:52:12 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*erase_whitespace(char *line)
 
 	new = ft_calloc(find_len_color(line) + 1, 1);
 	if (!new)
-		return (NULL);
+		exit_game("Error. Malloc fail", 1);
 	j = 0;
 	count = 0;
 	while (*line)

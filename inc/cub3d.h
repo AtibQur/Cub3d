@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:48:29 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/14 17:53:34 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:57:52 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <fcntl.h>
 # include <string.h>
 
-# define SCREENWIDTH 640
-# define SCREENHEIGHT 480
+# define SCREENWIDTH 860
+# define SCREENHEIGHT 620
 
 typedef struct s_map {
 	char	**map;
@@ -117,7 +117,7 @@ void		move_backward(char **map, t_player *player);
 void		move_forward(char **map, t_player *player);
 void		move_left(char **map, t_player *player);
 void		move_right(char **map, t_player *player);
-void		rotate(t_player *player, double move_speed);
+void		rotate(t_player *player, double rot_speed);
 
 // drawing
 void		draw_wall(t_data *data);

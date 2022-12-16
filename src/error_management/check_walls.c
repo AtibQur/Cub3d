@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:47:26 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/14 10:38:46 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:37:17 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	check_walls(t_data *data)
 		j = 0;
 		while (data->map.map[i][j])
 		{
-			printf("%c", data->map.map[i][j]);
 			check_wall_values(data, i, j);
 			j++;
 		}

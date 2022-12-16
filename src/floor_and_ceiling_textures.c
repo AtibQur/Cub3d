@@ -6,7 +6,7 @@
 /*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 10:44:54 by hqureshi          #+#    #+#             */
-/*   Updated: 2022/12/14 17:29:28 by hqureshi         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:38:08 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,28 @@ int	find_len_color(char *line)
 
 int	get_color(char *line)
 {
-	int	r;
-	int	g;
-	int	b;
+	int		r;
+	int		g;
+	int		b;
+	char	*tmp;
 
 	r = 0;
 	g = 0;
 	b = 0;
 	line = erase_whitespace(line + 1);
-	r = ft_atoi(line);
-	while (ft_isdigit(*line))
-		line++;
-	line++;
-	g = ft_atoi(line);
-	while (ft_isdigit(*line))
-		line++;
-	line++;
-	b = ft_atoi(line);
+	if (!line)
+		return (-1);
+	tmp = line;
+	r = ft_atoi(tmp);
+	while (ft_isdigit(*tmp))
+		tmp++;
+	tmp++;
+	g = ft_atoi(tmp);
+	while (ft_isdigit(*tmp))
+		tmp++;
+	tmp++;
+	b = ft_atoi(tmp);
+	free(line);
 	return (rgb_color(r, g, b));
 }
 

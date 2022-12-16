@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   hook.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: hqureshi <hqureshi@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/11/16 16:31:13 by tvan-der      #+#    #+#                 */
-/*   Updated: 2022/12/14 10:23:49 by tvan-der      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   hook.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hqureshi <hqureshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/16 16:31:13 by tvan-der          #+#    #+#             */
+/*   Updated: 2022/12/16 11:06:05 by hqureshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	do_key_press(t_data *data, t_player *player)
 	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
 		move_backward(map, player);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
-		rotate(player, player->move_speed);
+		rotate(player, player->rot_speed);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
-		rotate(player, -player->move_speed);
+		rotate(player, -player->rot_speed);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT_SHIFT))
-		player->move_speed = 0.15;
-	else
 		player->move_speed = 0.08;
+	else
+		player->move_speed = 0.05;
 }
 
 void	hook(void *param)
