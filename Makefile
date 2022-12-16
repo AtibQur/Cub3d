@@ -48,7 +48,7 @@ ifdef DEBUG
  CFLAGS = -Wextra -Wall -Werror -fsanitize=address -g
  LIBFT_MAKE = make debug -sC lib/libft
 else
- CFLAGS = -Wextra -Wall -Werror -g
+ CFLAGS = -Wextra -Wall -Werror
  LIBFT_MAKE = make -sC lib/libft
 endif
 

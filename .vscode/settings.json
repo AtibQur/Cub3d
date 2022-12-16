@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "__tree": "c",
-        "map": "c",
-        "__locale": "c",
-        "sstream": "c"
-    }
-}
